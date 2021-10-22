@@ -21,7 +21,7 @@
             $sql2 = "UPDATE user SET status =  $status WHERE gmail = '$gmail'";
             $result2 = mysqli_query($conn,$sql2);
             if($result2){
-                header('Location: ../views/signin.php');
+                header('Location: http://localhost/Bai-Tap-Lon/views/signin.php');
             }
             else{
                 echo'Kich hoat khong thanh cong';

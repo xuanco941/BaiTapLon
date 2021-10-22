@@ -1,6 +1,6 @@
 <?php
     function connectDB(){
-        $conn = mysqli_connect('localhost','root','','test_btl');
+        $conn = mysqli_connect('localhost','root','','hotel');
         if($conn){
             return $conn;
         }
