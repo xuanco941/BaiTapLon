@@ -1,4 +1,5 @@
 <?php
+    // Them hotel
     include './model/hotel.php';
     if(isset($_POST['name_hotel'])){
         $name_hotel = $_POST['name_hotel'] ;

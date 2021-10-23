@@ -1,4 +1,5 @@
 <?php
+    // Cap nhat hotel
     include './model/hotel.php';
     if(isset($_POST['id'])){
         $id = $_POST['id'];

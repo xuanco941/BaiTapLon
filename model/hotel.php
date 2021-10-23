@@ -56,4 +56,18 @@
         }
         mysqli_close($conn);
     }
+
+    function searchHotel($name_hotel){
+        $conn = connectDB();
+        $sql = "select * from hotel_info where name_hotel = '$name_hotel'";
+        $result = mysqli_query($conn,$sql);
+        $count = mysqli_num_rows($result);
+        if($count>=1){
+            return $result;
+        }
+        else{
+            echo 'loi tim kiem du lieu tu bang hotel_info'; 
+        }
+        mysqli_close($conn);
+    }
 ?>

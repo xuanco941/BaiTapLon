@@ -1,4 +1,5 @@
 <?php
+    // Dang ki tai khoan
     include '../modal/connectDB.php';
     include '../send-email/sendEmail.php';
 

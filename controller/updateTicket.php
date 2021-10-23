@@ -1,4 +1,5 @@
 <?php
+    // Cap nhat ticket
     include './model/ticket.php';
     if(isset($_POST['id'])){
         $id = $_POST['id'];

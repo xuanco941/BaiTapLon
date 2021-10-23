@@ -1,4 +1,5 @@
 <?php
+    // Xac thuc tai khoan
     include '../modal/connectDB.php';
     if(isset($_GET['gmail']) && isset($_GET['code'])){
         $conn = connectDB();

@@ -1,4 +1,5 @@
 <?php
+    // Dang nhap
     include '../modal/connectDB.php';
     include '../send-email/sendEmail.php';
 
