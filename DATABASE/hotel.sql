@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 23, 2021 lúc 08:19 AM
+-- Thời gian đã tạo: Th10 23, 2021 lúc 02:01 PM
 -- Phiên bản máy phục vụ: 10.4.20-MariaDB
 -- Phiên bản PHP: 8.0.9
 
@@ -20,6 +20,26 @@ SET time_zone = "+00:00";
 --
 -- Cơ sở dữ liệu: `hotel`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `admin`
+--
+
+CREATE TABLE `admin` (
+  `ID` int(11) NOT NULL,
+  `taikhoan` varchar(50) NOT NULL,
+  `matkhau` varchar(50) NOT NULL,
+  `hoten` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `admin`
+--
+
+INSERT INTO `admin` (`ID`, `taikhoan`, `matkhau`, `hoten`) VALUES
+(1, 'admin', 'admin', 'Do Van Xuan');
 
 -- --------------------------------------------------------
 
@@ -100,6 +120,12 @@ INSERT INTO `user` (`id`, `gmail`, `password`, `status`, `code`, `phonenumber`) 
 --
 
 --
+-- Chỉ mục cho bảng `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Chỉ mục cho bảng `hotel_info`
 --
 ALTER TABLE `hotel_info`
@@ -120,6 +146,12 @@ ALTER TABLE `user`
 --
 -- AUTO_INCREMENT cho các bảng đã đổ
 --
+
+--
+-- AUTO_INCREMENT cho bảng `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT cho bảng `hotel_info`
