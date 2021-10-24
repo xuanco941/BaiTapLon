@@ -1,7 +1,12 @@
-<form action="" method="get">
-    <input type="text" name="gmail">
-    <input type="text" name="code">
-    <button type="submit"></button>
+<!DOCTYPE html>
+<html>
+<body>
+
+<form action="./controller/uploadImg.php" method="post" enctype="multipart/form-data">
+  Select image to upload:
+  <input type="file" name="fileToUpload" id="fileToUpload">
+  <input type="submit" value="Upload Image" name="submit">
 </form>
 
-
+</body>
+</html>

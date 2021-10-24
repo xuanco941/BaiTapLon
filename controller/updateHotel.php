@@ -13,8 +13,9 @@
         $message = $_POST['message'];
         $mota = $_POST['mota'];
         $trangthai = $_POST['trangthai'];
+        $img = $_POST['img'];
 
-        if(updateHotel($id,$name_hotel,$phone,$place,$soluongphong,$nhahang,$phonghop,$damcuoi,$message,$mota,$trangthai)){
+        if(updateHotel($id,$name_hotel,$phone,$place,$soluongphong,$nhahang,$phonghop,$damcuoi,$message,$mota,$trangthai,$img)){
             echo 'thong bao cap nhat hotel thanh cong';
         }
         else{
