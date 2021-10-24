@@ -25,7 +25,7 @@
                 $status = $row2[0];
                 $code = password_hash($row2[1],PASSWORD_DEFAULT);
                 if($status==true){
-                    header('Location: ../views/home.php');
+                    header('Location: ../index.php');
                 }
                 else{
                     $title = '[Kích hoạt tài khoản]';
