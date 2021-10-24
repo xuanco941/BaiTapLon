@@ -1,0 +1,9 @@
+:root{
+    --bgr-color: lightgray;
+    --border-style: 1px solid rgba(255, 255, 255, .5);
+    --bgr-img: url('../img/background_body.jpg');
+    --bgr-img-2: url('../img/background_body_2.jpeg');
+}
+body{
+    background-color: var(--bgr-color);
+}
