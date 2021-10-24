@@ -1,6 +1,6 @@
 <?php
     // Dang ki tai khoan
-    include '../modal/connectDB.php';
+    include '../model/connectDB.php';
     include '../send-email/sendEmail.php';
 
     // Kiem tra neu ton tai email , password duoc gui len thi se kiem tra trong db
@@ -32,8 +32,8 @@
             if($result==true){
                 $title = '[Kích hoạt tài khoản]';
                 $bodyContent = "<a 
-                style='height:100px;padding:10px;background-color:darkgreen;font-size:20px;color:white;margin:0 auto'
-                href = 'http://localhost/Bai-Tap-Lon/controller/authentication.php/?gmail=$gmail&code=$code' >
+                style='background-color:darkgreen;color:white;'
+                href = 'http://localhost/BaiTapLon/controller/authentication.php/?gmail=$gmail&code=$code' >
                 Click vào đây để xác nhận tài khoản $gmail của bạn</a>";
 
                 sendEmail($gmail,$title,$bodyContent);
