@@ -12,9 +12,9 @@
         $message = $_POST['message'];
         $mota = $_POST['mota'];
         $trangthai = $_POST['trangthai'];
-        $img = $_POST('img');
+        $img = $_FILES('img');
 
-        if(insertHotel($name_hotel,$phone,$place,$soluongphong,$nhahang,$phonghop,$damcuoi,$message,$mota,$trangthai,$img)){
+        if(insertHotel($name_hotel,$phone,$place,$soluongphong,$nhahang,$phonghop,$damcuoi,$message,$mota,$trangthai,$img['name']) && upImg($img)){
             echo 'thong bao them hotel thanh cong';
         }
         else{
