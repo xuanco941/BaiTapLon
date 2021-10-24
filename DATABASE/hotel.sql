@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 23, 2021 lúc 02:01 PM
+-- Thời gian đã tạo: Th10 24, 2021 lúc 04:39 AM
 -- Phiên bản máy phục vụ: 10.4.20-MariaDB
 -- Phiên bản PHP: 8.0.9
 
@@ -58,15 +58,16 @@ CREATE TABLE `hotel_info` (
   `damcuoi` tinyint(1) DEFAULT NULL,
   `message` tinyint(1) DEFAULT NULL,
   `mota` text DEFAULT NULL,
-  `trangthai` tinyint(1) DEFAULT NULL
+  `trangthai` tinyint(1) DEFAULT NULL,
+  `img` varchar(300) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `hotel_info`
 --
 
-INSERT INTO `hotel_info` (`id`, `name_hotel`, `phone`, `place`, `soluongphong`, `nhahang`, `phonghop`, `damcuoi`, `message`, `mota`, `trangthai`) VALUES
-(1, 'Lonely Hotel', '0123456789', 'Ha Noi', 300, 1, 0, 1, 1, 'La khach san cho nguoi co don so 1 Chau Phi', 1);
+INSERT INTO `hotel_info` (`id`, `name_hotel`, `phone`, `place`, `soluongphong`, `nhahang`, `phonghop`, `damcuoi`, `message`, `mota`, `trangthai`, `img`) VALUES
+(1, 'Lonely Hotel', '0123456789', 'Ha Noi', 300, 1, 0, 1, 1, 'La khach san cho nguoi co don so 1 Chau Phi', 1, NULL);
 
 -- --------------------------------------------------------
 
