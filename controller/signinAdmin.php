@@ -8,10 +8,14 @@
         $matkhau = $_POST['matkhau'];
         if(isAdmin($taikhoan,$matkhau)){
             $_SESSION['signinAdmin'] = $taikhoan;
+            if(isset($_SESSION['notify_admin'])){
+                unset($_SESSION['notify_admin']);
+            }
             header('Location: ../admin/dashboard.php');
         }
         else{
             $_SESSION['notify_admin'] = 'Tài khoản hoặc mật khẩu không chính xác';
+            header('Location: ../admin/index.php');
         }
     }
 ?>
