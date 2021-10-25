@@ -1,3 +1,9 @@
+<?php
+    session_start();
+    if(isset($_SESSION['loginSuccess'])){
+        header('Location: ../index.php');
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,27 +22,32 @@
     <div class="container-fluid">
         <div class="main row">
 
-            <form class="form-center col-sm-5" style="height: 350px;" action="../controller/signup.php" method="POST">
+            <form id="formSign" class="form-center col-sm-5" style="height: 350px;" action="../controller/signup.php" method="POST">
                 <div class="row mb-2">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+                    <label for="inputGmail" class="col-sm-2 col-form-label">Email</label>
                     <div class="col-sm-9">
-                        <input type="email" class="form-control" id="inputEmail3" name="gmail">
+                        <input type="email" class="form-control" id="inputGmail" name="gmail" required>
                     </div>
                 </div>
                 <div class="row mb-2">
-                    <label for="inputPassword3" class="col-sm-2 col-form-label">Mật khẩu</label>
+                    <label for="inputPassword" class="col-sm-2 col-form-label">Mật khẩu</label>
                     <div class="col-sm-9">
-                        <input type="password" class="form-control" id="inputPassword3" name="password">
+                        <input type="password" class="form-control" id="inputPassword" name="password" required>
                     </div>
                 </div>
                 <div class="row mb-2">
-                    <label for="inputPassword3" class="col-sm-2 col-form-label">Nhập lại khẩu</label>
+                    <label for="inputRepeatPassword" class="col-sm-2 col-form-label">Nhập lại khẩu</label>
                     <div class="col-sm-9">
-                        <input type="password" class="form-control" id="inputPassword3" name="repeat_password">
+                        <input type="password" class="form-control" id="inputRepeatPassword" name="repeat_password" required>
                     </div>
                 </div>
-                <span class="notify">
-                    day la cho hien thong bao
+                <span class="notify" id="notify">
+                    <?php
+                        if (!isset($_SESSION['notify_signup'])) {
+                            $_SESSION['notify_signup'] = '';
+                        }
+                        echo $_SESSION['notify_signup'];
+                    ?>
                 </span>
                 <div class="footer-form">
                     <button type="submit" class="btn btn-primary">Đăng ký</button>
@@ -48,6 +59,7 @@
         </div>
     </div>
 
+    <script src="../assets/js/formSignUp.js"></script>
 </body>
 
 </html>
