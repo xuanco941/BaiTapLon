@@ -13,3 +13,32 @@
 .card h5 {
     color: rgb(94, 94, 221);
 }
+.card{
+    margin-top: 20px;
+}
+.item-head:hover{
+    font-size: 18px;
+}
+.slogan{
+    background-color: #e3f2fd;
+    margin: 0;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.slogan>h2{
+    font-style: oblique;
+    margin: 0;
+}
+#navbar-mb{
+    display: none;
+}
+@media (max-width: 1140px) {
+    #navbar-pc{
+        display: none;
+    }
+    #navbar-mb{
+        display: block;
+    }
+}
