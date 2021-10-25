@@ -15,7 +15,7 @@
 
     <div class="text-center" style="height: 42rem;">
         <div class="container">
-            <p><i class="fal fa-bug" style="font-size: 20rem; margin-top:5%; color: #adb5bd;"></i></p>
+            <p><i class="fal fa-bug" style="font-size: 20rem; margin-top:8%; color: #adb5bd;"></i></p>
             <br>
             <p style="color: #adb5bd;">OPP!!! We've noted an error while using your app. <br> Please return to the homepage to continue the selection.</p>
             <a class="btn btn-warning" href="http://localhost/BTL_CNW_QLKS/" role="button"><button style="color: inherit; background-color:inherit; border:none;" type="submit"><i class="fal fa-home-lg"></i> Home Page</button></a>
