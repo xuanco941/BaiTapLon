@@ -20,7 +20,7 @@
   <nav class="navbar navbar-expand-md navbar-light sticky-top " style="background-color: #e3f2fd;">
     <div class="container-fluid">
       <a class="navbar-branch" href="#">
-        <img src="image/mau-logo-khach-san-dep-1.png" height="50">
+        <img src="assets/img/mau-logo-khach-san-dep-1.png" height="50">
       </a>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav">
@@ -76,20 +76,20 @@
       <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="image/a.jpg" style="width:100%; height:450px;" alt="...">
+            <img src="assets/img/a.jpg" style="width:100%; height:450px;" alt="...">
 
           </div>
           <div class="carousel-item">
-            <img src="image/b.jpg" style="width:100%; height:450px;" alt="...">
+            <img src="assets/img/b.jpg" style="width:100%; height:450px;" alt="...">
           </div>
           <div class="carousel-item">
-            <img src="image/c.jpg" style="width:100%; height:450px;" alt="...">
+            <img src="assets/img/c.jpg" style="width:100%; height:450px;" alt="...">
           </div>
           <div class="carousel-item">
-            <img src="image/f.jpeg" style="width:100%; height:450px;" alt="...">
+            <img src="assets/img/f.jpeg" style="width:100%; height:450px;" alt="...">
           </div>
           <div class="carousel-item">
-            <img src="image/e.jpg" style="width:100%; height:450px;" alt="...">
+            <img src="assets/img/e.jpg" style="width:100%; height:450px;" alt="...">
           </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -110,7 +110,7 @@
     <div class="card-group my-4 row">
       <div class="col-4">
         <div class="card ">
-          <img class="card-img-top" src="image/phonghop1.jpg" alt="Card image cap">
+          <img class="card-img-top" src="assets/img/phonghop1.jpg" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title">Phòng họp</h5>
             <p class="card-text">Phòng họp theo phong cách hiện đại với đầy đủ tiện nghi</p>
@@ -119,8 +119,8 @@
         </div>
       </div>
       <div class="col-4">
-        <div class="card ">
-          <img class="card-img-top" src="image/d.jpg" alt="Card image cap">
+        <div class="card" >
+          <img class="card-img-top" src="assets/img/d.jpg" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title">Phòng ngủ</h5>
             <p class="card-text">Được các kỹ sư Italy thiết kế theo phong cách Châu âu với tiêu chuẩn 5 sao</p>
@@ -130,30 +130,30 @@
       </div>
       <div class="col-4">
         <div class="card ">
-          <img class="card-img-top" src="./assets/img/IMG_0388.JPG" alt="Card image cap">
+          <img class="card-img-top" src="assets/img/damcuoi.jpg" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title">Sảng tiệc đám cưới</h5>
-            <p class="card-text">Sở hữu hội trường rộng 200m2 với sức chứa tối đa lên tới 180 người. Cơ sở vật chất mới,sang trọgn </p>
+            <p class="card-text">Sở hữu hội trường rộng 200m2 với sức chứa tối đa lên tới 180 người. </p>
             <a href="#" class="btn btn-warning">Xem chi tiết</a>
           </div>
         </div>
       </div>
       <div class="col-4">
         <div class="card ">
-          <img class="card-img-top" src="./assets/img/IMG_0388.JPG" alt="Card image cap">
+          <img class="card-img-top" src="./assets/img/e.jpg" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title">Sảng tiệc đám cưới</h5>
-            <p class="card-text">Sở hữu hội trường rộng 200m2 với sức chứa tối đa lên tới 180 người. Cơ sở vật chất mới,sang trọgn </p>
+            <p class="card-text">Sở hữu hội trường rộng 200m2 với sức chứa tối đa lên tới 180 người. </p>
             <a href="#" class="btn btn-warning">Xem chi tiết</a>
           </div>
         </div>
       </div>
       <div class="col-4">
         <div class="card ">
-          <img class="card-img-top" src="./assets/img/IMG_0388.JPG" alt="Card image cap">
+          <img class="card-img-top" src="./assets/img/e.jpg "alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title">Sảng tiệc đám cưới</h5>
-            <p class="card-text">Sở hữu hội trường rộng 200m2 với sức chứa tối đa lên tới 180 người. Cơ sở vật chất mới,sang trọgn </p>
+            <p class="card-text">Sở hữu hội trường rộng 200m2 với sức chứa tối đa lên tới 180 người. </p>
             <a href="#" class="btn btn-warning">Xem chi tiết</a>
           </div>
         </div>
@@ -161,6 +161,26 @@
     </div>
   </div>
   </div>
+
+  <nav aria-label="Page navigation example ">
+  <ul class="pagination  justify-content-center">
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+        <span class="sr-only">Previous</span>
+      </a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+        <span class="sr-only">Next</span>
+      </a>
+    </li>
+  </ul>
+</nav>
 
   <footer class="bg-light text-center text-lg-start">
     <div class="text-center p-3" style="background-color: #e3f2fd;">
