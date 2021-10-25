@@ -1,14 +1,8 @@
 *{
    
     font-family: Arial, Helvetica, sans-serif;
-    }
-.navbar li a {
-    color: black !important;
-   
 }
-.navbar li a:hover {
-    color: black !important;
-}
+
 .container-fluid{
     padding-left: 0px;
     padding-right: 0px;

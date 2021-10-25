@@ -1,6 +1,6 @@
 <?php
     // Xac thuc tai khoan
-    include '../modal/connectDB.php';
+    include '../model/connectDB.php';
     if(isset($_GET['gmail']) && isset($_GET['code'])){
         $conn = connectDB();
 
@@ -22,7 +22,7 @@
             $sql2 = "UPDATE user SET status =  $status WHERE gmail = '$gmail'";
             $result2 = mysqli_query($conn,$sql2);
             if($result2){
-                header('Location: http://localhost/Bai-Tap-Lon/views/signin.php');
+                header('Location: http://localhost/BaiTapLon/views/signin.php');
             }
             else{
                 echo'Kich hoat khong thanh cong';
