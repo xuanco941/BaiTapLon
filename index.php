@@ -1,3 +1,6 @@
+<?php
+  session_start();
+?>
 <!doctype html>
 <html lang="en">
 
@@ -8,7 +11,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="./assets/css/main.css">
   <link rel="stylesheet" href="./assets/css/styleUserHome.css">
-  <title>hotel online booking</title>
+  <title>Dịch vụ đặt khách sạn trực tuyến</title>
 </head>
 
 
@@ -44,9 +47,18 @@
 
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="btn btn-info" href="#" role="button"><i class="fas fa-cart-plus"></i>Vé đặt</a>
-            <a style="color: white;" class="btn btn-success" href="./views/signin.php" role="button">Đăng nhập</a>
-            <a style="color: white;" class="btn btn-primary" href="./views/signup.php" role="button">Đăng ký</a>
+            <a href="./views/ticket.php" class="btn btn-info" style="color: blue;" href="#" role="button"><i class="fas fa-cart-plus"></i>Vé đặt</a>
+            <?php
+              if(!isset($_SESSION['loginSuccess'])){
+                echo '
+                <a style="color: white;" class="btn btn-success" href="./views/signin.php" role="button">Đăng nhập</a>
+                <a style="color: white;" class="btn btn-primary" href="./views/signup.php" role="button">Đăng ký</a>
+                ';
+              }
+              else{
+                echo'<a style="color: white;" class="btn btn-danger" href="./controller/signout.php" role="button">Đăng xuất</a>';
+              }
+            ?>
           </li>
 
         </ul>
