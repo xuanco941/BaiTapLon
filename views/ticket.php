@@ -14,7 +14,7 @@
     <title>Đặt phòng</title>
 </head>
 <body>
-    hello
+    
     
 </body>
 </html>

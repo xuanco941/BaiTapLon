@@ -19,9 +19,7 @@ session_start();
 
   <nav id="navbar-pc" class="navbar navbar-expand-md navbar-light sticky-top " style="background-color: #e3f2fd;">
     <div class="container-fluid">
-      <a class="navbar-branch" href="./index.php">
-        <img src="assets/img/img_flag.png" height="50">
-      </a>
+    
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav">
           <li class="nav-item item-head">
@@ -35,7 +33,7 @@ session_start();
         <ul class="navbar-nav ms-auto">
           <li>
             <form action="./controller/searchHotel.php" method="GET" class="input-group">
-              <input type="text" class="form-control" placeholder="Nhập tên khách sạn" aria-label="search" name="hotel_name">
+              <input type="text" class="form-control" placeholder="Nhập tên khách sạn" aria-label="search" name="hotel_name" required>
               <a class="btn btn-primary" href="#" role="button"><button style="color: inherit; background-color:inherit; border:none;" type="submit">Tìm kiếm</button></a>
             </form>
           </li>
@@ -60,15 +58,27 @@ session_start();
       </div>
     </div>
   </nav>
-  <nav id="navbar-mb">
+  
+  <nav id="navbar-mb" class="navbar navbar-expand-md navbar-light sticky-top " style="background-color: #e3f2fd;">
     <div class="dropdown">
       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
-        Dropdown
+        Menu
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-        <li><button class="dropdown-item" type="button">Action</button></li>
-        <li><button class="dropdown-item" type="button">Another action</button></li>
-        <li><button class="dropdown-item" type="button">Something else here</button></li>
+        <li  ><button class="dropdown-item" type="button">Đặt vé nhanh</button></li>
+        <li  ><a class="dropdown-link" href="./views/ticket.php"><button class="dropdown-item" type="button">Vé đặt</button></a></li>
+        <li  ><a class="dropdown-link" href="./views/search.php"><button class="dropdown-item" type="button">Tìm kiếm</button></a></li>
+        <?php
+        if (!isset($_SESSION['loginSuccess'])) {
+          echo '
+          <li  ><a class="dropdown-link" href="./views/signin.php" ><button class="dropdown-item" type="button">Đăng nhập</button></a></li>
+          <li  ><a class="dropdown-link" href="./views/signup.php"><button class="dropdown-item" type="button">Đăng ký</button></a></li>
+                ';
+        } else {
+          echo '<li  ><a class="dropdown-link" href=./controller/signout.php><button class="dropdown-item" type="button">Đăng xuất</button></a></li>';
+        }
+        ?>
+
       </ul>
     </div>
   </nav>
