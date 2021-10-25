@@ -8,8 +8,15 @@
     padding-right: 0px;
 }
 .navbar-nav input {
-    margin-left: 300px;
+    margin-left: 100px;
 }
 .card h5 {
     color: rgb(94, 94, 221);
+}
+.container{
+    margin-left: 40px;
+    margin-right: 40px;
+}
+.req{
+    color:red;
 }
