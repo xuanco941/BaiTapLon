@@ -1,3 +1,10 @@
+<?php
+    session_start();
+    if(isset($_SESSION['loginSuccess'])){
+        header('Location: ../index.php');
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,43 +20,51 @@
 
 <body>
 
+
     <div class="container-fluid">
         <div class="main row">
 
-            <form class="form-center col-sm-5" action="../controller/signin.php" method="POST">
+            <form id="formSign" class="form-center col-sm-5" action="../controller/signin.php" method="POST">
                 <div class="row mb-2">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+                    <label for="inputGmail" class="col-sm-2 col-form-label">Gmail</label>
                     <div class="col-sm-9">
-                        <input type="email" class="form-control" id="inputEmail3" name="gmail" placeholder="Nhập email">
+                        <input type="email" class="form-control" id="inputGmail" name="gmail" placeholder="Nhập email" required>
                     </div>
                 </div>
                 <div class="row mb-2">
-                    <label for="inputPassword3" class="col-sm-2 col-form-label">Mật khẩu</label>
+                    <label for="inputPassword" class="col-sm-2 col-form-label">Mật khẩu</label>
                     <div class="col-sm-9">
-                        <input type="password" class="form-control" id="inputPassword3" name="password" placeholder="Nhập mật khẩu">
+                        <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Nhập mật khẩu" required>
                     </div>
                 </div>
                 <div class="row mb-2">
                     <div class="col-sm-9 offset-sm-2">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="gridCheck1">
-                            <label class="form-check-label" for="gridCheck1">
+                            <input class="form-check-input" type="checkbox" id="checkRemember">
+                            <label class="form-check-label" for="checkRemember">
                                 Nhớ
                             </label>
                         </div>
                     </div>
                 </div>
-                <span class="notify">
-                    day la cho hien thong bao
+                <span class="notify" id="notify">
+                    <?php
+                    if (!isset($_SESSION['notify_signin'])) {
+                        $_SESSION['notify_signin'] = '';
+                    }
+                    echo $_SESSION['notify_signin'];
+                    ?>
                 </span>
                 <div class="footer-form">
-                    <button type="submit" class="btn btn-success">Đăng nhập</button>
+                    <button type="submit" id="btnSubmit" class="btn btn-success">Đăng nhập</button>
                     <a href="./signup.php"><button type="button" class="btn btn-outline-warning">Chưa có tài khoản?</button></a>
                 </div>
             </form>
 
         </div>
     </div>
+
+    <script src="../assets/js/formSignIn.js"></script>
 
 </body>
 

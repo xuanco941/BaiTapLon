@@ -1,4 +1,8 @@
 <?php
+     session_start();
+     if(isset($_SESSION['loginSuccess'])){
+         header('Location: ../index.php');
+     }
     // Dang ki tai khoan
     include '../model/connectDB.php';
     include '../send-email/sendEmail.php';
@@ -37,15 +41,17 @@
                 Click vào đây để xác nhận tài khoản $gmail của bạn</a>";
 
                 sendEmail($gmail,$title,$bodyContent);
-                header('Location: ../views/signin.php');
+                $_SESSION['notify_signup'] = 'Đã gửi email xác thực tài khoản , bạn hãy kiểm tra hộp thư của mình';
+                header('Location: ../views/signup.php');
             }
             else{
-                echo 'Dang ky khong thanh cong';
+                $_SESSION['notify_signup'] = 'Lỗi hệ thống, đăng ký không thành công';
+                header('Location: ../views/signup.php');
             }
         }
         else{
-            echo 'Email da ton tai';
+            $_SESSION['notify_signup'] = 'Tài khoản này đã tồn tại';
+            header('Location: ../views/signup.php');
         }
         mysqli_close($conn);
     }
-?>

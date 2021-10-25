@@ -1,4 +1,5 @@
 <?php
+    session_start();
     // Xac thuc tai khoan
     include '../model/connectDB.php';
     if(isset($_GET['gmail']) && isset($_GET['code'])){
@@ -22,6 +23,7 @@
             $sql2 = "UPDATE user SET status =  $status WHERE gmail = '$gmail'";
             $result2 = mysqli_query($conn,$sql2);
             if($result2){
+                $_SESSION['notify_signin'] = 'Kích hoạt thành công , mời bạn đăng nhập';
                 header('Location: http://localhost/BaiTapLon/views/signin.php');
             }
             else{
