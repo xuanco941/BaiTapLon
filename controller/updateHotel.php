@@ -11,12 +11,12 @@
         $nhahang = $_POST['nhahang'];
         $phonghop = $_POST['phonghop'];
         $damcuoi = $_POST['damcuoi'];
-        $message = $_POST['message'];
+        $massage = $_POST['massage'];
         $mota = $_POST['mota'];
         $trangthai = $_POST['trangthai'];
         $img = $_FILES['img'];
 
-        if(updateHotel($id,$name_hotel,$phone,$place,$soluongphong,$nhahang,$phonghop,$damcuoi,$message,$mota,$trangthai,$img['name']) && upImg($img)){
+        if(updateHotel($id,$name_hotel,$phone,$place,$soluongphong,$nhahang,$phonghop,$damcuoi,$massage,$mota,$trangthai,$img['name']) && upImg($img)){
             echo 'thong bao cap nhat hotel thanh cong';
         }
         else{
