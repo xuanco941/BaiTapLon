@@ -28,12 +28,11 @@ if ($img["size"] > 500000) {
   $uploadOk = 0;
 }
 
-// chi cho upfile jpg , png , jpeg , gif
-if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-&& $imageFileType != "gif" ) {
-  echo 'chi cho upfile jpg , png , jpeg , gif';
-  $uploadOk = 0;
-}
+// // chi cho upfile jpg , png , jpeg , gif
+// if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+// && $imageFileType != "gif" ) {
+//   $uploadOk = 0;
+// }
 
 // Neu uploadOk = 1 thi cho up
 if ($uploadOk == 0) {

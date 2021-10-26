@@ -1,10 +1,14 @@
 <?php
+session_start();
+if (!isset($_SESSION['signinAdmin'])) {
+    header('Location: ../admin/index.php');
+}
     // Xoa hotel
-    include './model/hotel.php';
-    if(isset($_POST['id'])){
-        $id = $_POST['id'];
+    include '../model/hotel.php';
+    if(isset($_GET['id_hotel'])){
+        $id = $_GET['id_hotel'];
         if(deleteHotel($id)){
-            echo 'thong bao xoa hotel thanh cong';
+            header('Location: ../admin/dashboard.php');
         }
         else{
             echo 'loi xoa hotel';
@@ -13,4 +17,3 @@
     else{
         echo'thieu thong tin xoa hotel';
     }
-?>
