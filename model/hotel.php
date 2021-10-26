@@ -26,8 +26,21 @@
 
     function insertHotel($name_hotel,$phone,$place,$soluongphong,$nhahang,$phonghop,$damcuoi,$massage,$mota,$trangthai,$img){
         $conn = connectDB();
-        $sql = "INSERT INTO `hotel_info`( `name_hotel `, `phone`, `place`, `soluongphong`, `nhahang`, `phonghop`, `damcuoi`, `massage`, `mota`, `trangthai`,'img') 
-        VALUES ('$name_hotel','$phone','$place',$soluongphong,$nhahang,$phonghop,$damcuoi,$massage,'$mota','$trangthai','$img')";
+        $sql = "INSERT INTO hotel_info ( name_hotel , phone, place, soluongphong, nhahang, phonghop, damcuoi, massage, mota, trangthai,img) 
+        VALUES ('$name_hotel','$phone','$place','$soluongphong','$nhahang','$phonghop','$damcuoi','$massage','$mota','$trangthai','$img')";
+        $result = mysqli_query($conn,$sql);
+        if($result==true){
+            return true;
+        }
+        else{
+            return false;
+        }
+        mysqli_close($conn);
+    }
+    function insertHotelNoImg($name_hotel,$phone,$place,$soluongphong,$nhahang,$phonghop,$damcuoi,$massage,$mota,$trangthai){
+        $conn = connectDB();
+        $sql = "INSERT INTO hotel_info ( name_hotel , phone, place, soluongphong, nhahang, phonghop, damcuoi, massage, mota, trangthai) 
+        VALUES ('$name_hotel','$phone','$place','$soluongphong','$nhahang','$phonghop','$damcuoi','$massage','$mota','$trangthai')";
         $result = mysqli_query($conn,$sql);
         if($result==true){
             return true;
@@ -40,8 +53,21 @@
 
     function updateHotel($id,$name_hotel,$phone,$place,$soluongphong,$nhahang,$phonghop,$damcuoi,$massage,$mota,$trangthai,$img){
         $conn = connectDB();
-        $sql = "UPDATE `hotel_info` SET `name_hotel`='$name_hotel',`phone`='$phone',`place`='$place',`soluongphong`=$soluongphong,`nhahang`=$nhahang,
-        `phonghop`=$phonghop,`damcuoi`=$damcuoi,`massage`=$massage,`mota`='$mota',`trangthai`= $trangthai , 'img' = $img WHERE id = $id";
+        $sql = "UPDATE hotel_info SET name_hotel='$name_hotel',phone='$phone',place='$place',soluongphong='$soluongphong',nhahang='$nhahang',
+        phonghop='$phonghop',damcuoi ='$damcuoi',massage='$massage',mota='$mota',trangthai= '$trangthai' , img = '$img' WHERE id = $id";
+        $result = mysqli_query($conn,$sql);
+        if($result==true){
+            return true;
+        }
+        else{
+            return false;
+        }
+        mysqli_close($conn);
+    }
+    function updateHotelNoImg($id,$name_hotel,$phone,$place,$soluongphong,$nhahang,$phonghop,$damcuoi,$massage,$mota,$trangthai){
+        $conn = connectDB();
+        $sql = "UPDATE hotel_info SET name_hotel='$name_hotel',phone='$phone',place='$place',soluongphong='$soluongphong',nhahang='$nhahang',
+        phonghop='$phonghop',damcuoi ='$damcuoi',massage='$massage',mota='$mota',trangthai= '$trangthai' WHERE id = $id";
         $result = mysqli_query($conn,$sql);
         if($result==true){
             return true;
