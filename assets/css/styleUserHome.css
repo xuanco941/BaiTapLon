@@ -8,24 +8,18 @@
     padding-right: 0px;
 }
 .navbar-nav input {
-    margin-left: 100px;
+    margin-left: 300px;
 }
 .card h5 {
     color: rgb(94, 94, 221);
 }
-.container{
-    margin-left: 40px;
-    margin-right: 40px;
-}
-
 .card{
     margin-top: 20px;
 }
 .nav-link{
-    font-size: 15px;
-    font-weight: 600;
+    font-size: 20px;
+    font-weight: 700;
 }
-
 .slogan{
     background-color: #e3f2fd;
     margin: 0;
@@ -59,4 +53,19 @@
     text-decoration: none !important;
     
 }
-
+.box-page{
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.elm-link{
+    text-decoration: none;
+}
+.card-text{
+    color: black;
+}
+.card:hover{
+    border: 5px solid wheat;
+}

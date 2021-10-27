@@ -38,7 +38,7 @@ if (!isset($_SESSION['signinAdmin'])) {
                     <th scope="col">Đám cưới</th>
                     <th scope="col">Massage</th>
                     <th scope="col">Mô tả</th>
-                    <th scope="col">Trạng thái</th>
+                    <th scope="col">Đang hoạt động</th>
 
                 </tr>
             </thead>
@@ -52,21 +52,20 @@ if (!isset($_SESSION['signinAdmin'])) {
                 $countPage = countPageHotel($itemSelect);
 
                 $page = 1;
-                if(isset($_GET['page'])){
+                if (isset($_GET['page'])) {
                     $page = $_GET['page'];
                 }
-                $start = ($itemSelect*($page-1));
-                // if(isset($_GET['page']) || $_GET['page']!=1){
-                //     $end = $itemSelect*$page-1;
-                // }
-                $end = $itemSelect*$page;
 
-                $sqlSelectLimit = "select * from hotel_info limit $start , $end";
+                $start = $itemSelect * ($page - 1);
+
+                //$end = $itemSelect*$page;
+
+                $sqlSelectLimit = "select * from hotel_info limit $start , $itemSelect";
                 $conn = connectDB();
 
-                $result = mysqli_query($conn,$sqlSelectLimit);
+                $result2 = mysqli_query($conn, $sqlSelectLimit);
 
-                while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
+                while ($row = mysqli_fetch_array($result2, MYSQLI_NUM)) {
                     $nhahang = '';
                     $phonghop = '';
                     $damcuoi = '';
@@ -82,7 +81,7 @@ if (!isset($_SESSION['signinAdmin'])) {
                     if ($row[11]) {
                         $img = '<img src="../uploads/' . $row[11] . '" alt="img" class="preview-img" />';
                     } else {
-                        $img = '<img src="../assets/img/background_body_2.jpeg" alt="img" class="preview-img"/>';
+                        $img = '<img src="../assets/img/noimg.jpg" alt="img" class="preview-img"/>';
                     }
                     echo '
                 <tr>
@@ -122,16 +121,20 @@ if (!isset($_SESSION['signinAdmin'])) {
 
     <nav class="page-nav" aria-label="...">
         <ul class="pagination pagination-lg">
-
-
             <?php
-                for($i = 1 ; $i <= $countPage ; $i++){
+            for ($i = 1; $i <= $countPage; $i++) {
+
+                if (isset($_GET['page']) && $i == $_GET['page']) {
+                    echo "<li class='page-item disabled'><a class='page-link' href='./dashboard.php?page=$i'>$i</a></li>";
+                } else {
                     echo "<li class='page-item'><a class='page-link' href='./dashboard.php?page=$i'>$i</a></li>";
                 }
-                if(isset($conn)){
-                    mysqli_close($conn);
-                }
+            }
+            if (isset($conn)) {
+                mysqli_close($conn);
+            }
             ?>
+
 
         </ul>
     </nav>

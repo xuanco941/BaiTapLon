@@ -19,7 +19,7 @@ session_start();
 
   <nav id="navbar-pc" class="navbar navbar-expand-md navbar-light sticky-top " style="background-color: #e3f2fd;">
     <div class="container-fluid">
-    
+
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav">
           <li class="nav-item item-head">
@@ -58,16 +58,16 @@ session_start();
       </div>
     </div>
   </nav>
-  
+
   <nav id="navbar-mb" class="navbar navbar-expand-md navbar-light sticky-top " style="background-color: #e3f2fd;">
     <div class="dropdown">
       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
         Menu
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-        <li  ><button class="dropdown-item" type="button">Đặt vé nhanh</button></li>
-        <li  ><a class="dropdown-link" href="./views/ticket.php"><button class="dropdown-item" type="button">Vé đặt</button></a></li>
-        <li  ><a class="dropdown-link" href="./views/search.php"><button class="dropdown-item" type="button">Tìm kiếm</button></a></li>
+        <li><a href="./views/pickticket.php" class="dropdown-link"><button class="dropdown-item" type="button">Đặt vé nhanh</button></a></li>
+        <li><a class="dropdown-link" href="./views/ticket.php"><button class="dropdown-item" type="button">Vé đặt</button></a></li>
+        <li><a class="dropdown-link" href="./views/search.php"><button class="dropdown-item" type="button">Tìm kiếm</button></a></li>
         <?php
         if (!isset($_SESSION['loginSuccess'])) {
           echo '
@@ -123,78 +123,75 @@ session_start();
   <div class="container">
 
     <div class="card-group my-4 row">
-      <div class="col-sm-4">
+
+      <?php
+      // phan trang + render
+      include './model/hotel.php';
+      include './controller/pagination.php';
+      $itemSelect = 12;
+      $countPage = countPageHotel($itemSelect);
+
+      $page = 1;
+      if (isset($_GET['page'])) {
+        $page = $_GET['page'];
+      }
+      $start = ($itemSelect * ($page - 1));
+      // $end = $itemSelect * $page;
+
+      $sqlSelectLimit = "select * from hotel_info limit $start , $itemSelect";
+      $conn = connectDB();
+
+      $result = mysqli_query($conn, $sqlSelectLimit);
+
+      while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
+        $img = '';
+        if ($row[11]) {
+          $img = '<img class="card-img-top" src="./uploads/' . $row[11] . '" alt="Card image cap">';
+        } else {
+          $img = '<img src="./assets/img/noimg.jpg" alt="khong co img" class="card-img-top"/>';
+        }
+        echo '
+        
+        <div class="col-sm-4">
+        <a class="elm-link" href="./views/detail.php?product=' . $row[0] . '">
         <div class="card ">
-          <img class="card-img-top" src="assets/img/phonghop1.jpg" alt="Card image cap">
+          ' . $img . '
           <div class="card-body">
-            <h5 class="card-title">Phòng họp</h5>
-            <p class="card-text">Phòng họp theo phong cách hiện đại với đầy đủ tiện nghi</p>
-            <a href="#" class="btn btn-warning">Xem chi tiết</a>
+            <h5 class="card-title">' . $row[1] . '</h5>
+            <p class="card-text">' . $row[9] . '</p>
+            <a href="./views/detail.php?product=' . $row[0] . '" class="btn btn-warning">Xem chi tiết</a>
           </div>
         </div>
+        </a>
       </div>
-      <div class="col-sm-4">
-        <div class="card">
-          <img class="card-img-top" src="assets/img/d.jpg" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Phòng ngủ</h5>
-            <p class="card-text">Được các kỹ sư Italy thiết kế theo phong cách Châu âu với tiêu chuẩn 5 sao</p>
-            <a href="#" class="btn btn-warning">Xem chi tiết</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-4">
-        <div class="card ">
-          <img class="card-img-top" src="assets/img/damcuoi.jpg" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Sảng tiệc đám cưới</h5>
-            <p class="card-text">Sở hữu hội trường rộng 200m2 với sức chứa tối đa lên tới 180 người. </p>
-            <a href="#" class="btn btn-warning">Xem chi tiết</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-4">
-        <div class="card ">
-          <img class="card-img-top" src="./assets/img/e.jpg" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Sảng tiệc đám cưới</h5>
-            <p class="card-text">Sở hữu hội trường rộng 200m2 với sức chứa tối đa lên tới 180 người. </p>
-            <a href="#" class="btn btn-warning">Xem chi tiết</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-4">
-        <div class="card ">
-          <img class="card-img-top" src="./assets/img/e.jpg " alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Sảng tiệc đám cưới</h5>
-            <p class="card-text">Sở hữu hội trường rộng 200m2 với sức chứa tối đa lên tới 180 người. </p>
-            <a href="#" class="btn btn-warning">Xem chi tiết</a>
-          </div>
-        </div>
-      </div>
+        ';
+      }
+      ?>
+
     </div>
   </div>
-  </div>
 
-  <nav aria-label="Page navigation example ">
-    <ul class="pagination  justify-content-center">
-      <li class="page-item">
-        <a class="page-link" href="#" aria-label="Previous">
-          <span aria-hidden="true">&laquo;</span>
-          <span class="sr-only">Previous</span>
-        </a>
-      </li>
-      <li class="page-item"><a class="page-link" href="#">1</a></li>
-      <li class="page-item"><a class="page-link" href="#">2</a></li>
 
-      <li class="page-item">
-        <a class="page-link" href="#" aria-label="Next">
-          <span aria-hidden="true">&raquo;</span>
-          <span class="sr-only">Next</span>
-        </a>
-      </li>
+  <nav class="box-page" aria-label="...">
+    <ul class="pagination pagination-lg">
+
+      <?php
+      for ($i = 1; $i <= $countPage; $i++) {
+
+        if (isset($_GET['page']) && $i == $_GET['page']) {
+          echo "<li class='page-item disabled'><a class='page-link' href='./index.php?page=$i'>$i</a></li>";
+        } else {
+          echo "<li class='page-item'><a class='page-link' href='./index.php?page=$i'>$i</a></li>";
+        }
+      }
+      if (isset($conn)) {
+        mysqli_close($conn);
+      }
+      ?>
+
     </ul>
+
+
   </nav>
 
   <footer class="bg-light text-center text-lg-start">
