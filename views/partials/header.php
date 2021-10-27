@@ -6,7 +6,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav">
                 <li class="nav-item item-head">
-                    <a class="nav-link active" href="index.php">Trang chủ</a>
+                    <a class="nav-link active" href="../index.php">Trang chủ</a>
                 </li>
                 <li class="nav-item item-head">
                     <a class="nav-link" href="./ticket.php">Đặt vé nhanh</a>

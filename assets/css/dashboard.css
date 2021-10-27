@@ -41,7 +41,6 @@
 .label-img{
     height: 70px;
     width: 70px;
-    background-color: cornflowerblue;
 }
 .label-img:hover{
     cursor: pointer;
