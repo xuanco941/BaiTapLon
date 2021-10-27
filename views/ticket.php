@@ -117,7 +117,7 @@ if (isset($_GET['id'])) {
 
                     include '../model/connectDB.php';
 
-                    $sql = "SELECT * FROM `hotel` where id = $id";
+                    $sql = "SELECT * FROM `ticket` where id = $id";
                     $result = mysqli_query($conn, $sql);
                     if (mysqli_num_rows($result) > 0) {
                         while ($row = mysqli_fetch_assoc($result)) {
