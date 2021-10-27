@@ -10,7 +10,7 @@ session_start();
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="./assets/css/main.css">
-  <link rel="stylesheet" href="./assets/css/styleUserHome.css">
+  <link rel="stylesheet" href="./assets/css1/styleUserHome.css">
   <title>Dịch vụ đặt khách sạn trực tuyến</title>
 </head>
 
@@ -41,7 +41,7 @@ session_start();
 
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a href="./views/ticket.php" class="btn btn-info" style="color: blue;" href="#" role="button"><i class="fas fa-cart-plus"></i>Vé đặt</a>
+            <a href="./views/ticket.php" class="btn btn-info" style="color: blue;" href="./views/ticket.php" role="button"><i class="fas fa-cart-plus"></i>Vé đặt</a>
             <?php
             if (!isset($_SESSION['loginSuccess'])) {
               echo '
@@ -85,7 +85,7 @@ session_start();
 
   <nav>
     <div class="container-fluid">
-      <div class="text-center slogan">
+      <div class="text-center slogan my-2">
         <h2>Nhanh chóng, tiện lợi số 1 Châu Phi
         </h2>
       </div>
