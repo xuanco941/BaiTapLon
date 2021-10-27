@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 26, 2021 lúc 10:44 AM
--- Phiên bản máy phục vụ: 10.4.21-MariaDB
--- Phiên bản PHP: 8.0.12
+-- Host: 127.0.0.1
+-- Generation Time: Oct 27, 2021 at 03:17 PM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 8.0.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `hotel`
+-- Database: `hotel`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `admin`
+-- Table structure for table `admin`
 --
 
 CREATE TABLE `admin` (
@@ -35,7 +35,7 @@ CREATE TABLE `admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `admin`
+-- Dumping data for table `admin`
 --
 
 INSERT INTO `admin` (`ID`, `taikhoan`, `matkhau`, `hoten`) VALUES
@@ -44,7 +44,7 @@ INSERT INTO `admin` (`ID`, `taikhoan`, `matkhau`, `hoten`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `hotel_info`
+-- Table structure for table `hotel_info`
 --
 
 CREATE TABLE `hotel_info` (
@@ -63,7 +63,7 @@ CREATE TABLE `hotel_info` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `hotel_info`
+-- Dumping data for table `hotel_info`
 --
 
 INSERT INTO `hotel_info` (`id`, `name_hotel`, `phone`, `place`, `soluongphong`, `nhahang`, `phonghop`, `damcuoi`, `massage`, `mota`, `trangthai`, `img`) VALUES
@@ -72,7 +72,7 @@ INSERT INTO `hotel_info` (`id`, `name_hotel`, `phone`, `place`, `soluongphong`, 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `ticket`
+-- Table structure for table `ticket`
 --
 
 CREATE TABLE `ticket` (
@@ -88,7 +88,7 @@ CREATE TABLE `ticket` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `ticket`
+-- Dumping data for table `ticket`
 --
 
 INSERT INTO `ticket` (`id`, `tenkhach`, `gmail`, `hotel_name`, `ngaydat`, `ngayketthuc`, `yeucau`, `chiphi`, `trangthai`) VALUES
@@ -97,7 +97,7 @@ INSERT INTO `ticket` (`id`, `tenkhach`, `gmail`, `hotel_name`, `ngaydat`, `ngayk
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -110,67 +110,68 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `gmail`, `password`, `status`, `code`, `phonenumber`) VALUES
-(1, 'xuanco941@gmail.com', '$2y$10$IiRoIecEdUOhVeCjL6cucuhCiMHKI19p4Mg43SXZXHUN5ZGSFatAi', 1, '265', NULL);
+(1, 'xuanco941@gmail.com', '$2y$10$IiRoIecEdUOhVeCjL6cucuhCiMHKI19p4Mg43SXZXHUN5ZGSFatAi', 1, '265', NULL),
+(2, 'quangtu104@gmail.com', '$2y$10$cn5YQqGCtqdjH3FaeXF/cePHGEem8YonjWnhfim4LGtS/m1bw1AW2', 1, '861', NULL);
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `admin`
+-- Indexes for table `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Chỉ mục cho bảng `hotel_info`
+-- Indexes for table `hotel_info`
 --
 ALTER TABLE `hotel_info`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `ticket`
+-- Indexes for table `ticket`
 --
 ALTER TABLE `ticket`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT cho bảng `admin`
+-- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT cho bảng `hotel_info`
+-- AUTO_INCREMENT for table `hotel_info`
 --
 ALTER TABLE `hotel_info`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT cho bảng `ticket`
+-- AUTO_INCREMENT for table `ticket`
 --
 ALTER TABLE `ticket`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT cho bảng `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
