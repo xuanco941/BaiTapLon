@@ -129,7 +129,7 @@ if (isset($_GET['id'])) {
                             echo '<td>' . $row['ngayketthuc'] . '</td>';
                             echo '<td>' . $row['yeucau'] . '</td>';
                             echo '<td>' . $row['chiphi'] . '</td>';
-                            
+
                             echo '</tr>';
                         }
                     }
