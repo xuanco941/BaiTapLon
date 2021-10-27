@@ -15,7 +15,7 @@
 
             <ul class="navbar-nav ms-auto">
                 <li>
-                    <form action="../controller/searchHotel.php" method="GET" class="input-group">
+                    <form action="../controller/searchHotel.php" method="GET" class="input-group search_mb">
                         <input type="text" class="form-control" placeholder="Nhập tên khách sạn" aria-label="search" name="hotel_name">
                         <a class="btn btn-primary" href="#" role="button"><button style="color: inherit; background-color:inherit; border:none;" type="submit">Tìm kiếm</button></a>
                     </form>
