@@ -41,7 +41,7 @@ session_start();
 
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a href="./views/ticket.php" class="btn btn-info" style="color: blue;" href="#" role="button"><i class="fas fa-cart-plus"></i>Vé đặt</a>
+            <a href="./views/ticket.php" class="btn btn-info" style="color: blue;" href="./views/ticket.php" role="button"><i class="fas fa-cart-plus"></i>Vé đặt</a>
             <?php
             if (!isset($_SESSION['loginSuccess'])) {
               echo '
@@ -85,7 +85,7 @@ session_start();
 
   <nav>
     <div class="container-fluid">
-      <div class="text-center slogan">
+      <div class="text-center slogan my-2">
         <h2>Nhanh chóng, tiện lợi số 1 Châu Phi
         </h2>
       </div>
