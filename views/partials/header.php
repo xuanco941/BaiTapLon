@@ -1,6 +1,4 @@
 
-
-
 <nav id="navbar-pc" class="navbar navbar-expand-md navbar-light sticky-top " style="background-color: #e3f2fd;">
     <div class="container-fluid">
         

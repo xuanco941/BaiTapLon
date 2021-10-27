@@ -21,6 +21,8 @@ if (!isset($_SESSION['signinAdmin'])) {
     <div class="head">
         <a href="./dashboard.php">Danh sách khách sạn</a>
     </div>
+    <div class="insert-btn"><button type="button" id="insert" class="btn btn-success insert-button">Thêm</button>
+    </div>
     <div class="container-fluid">
         <table class="table">
             <thead>
@@ -43,8 +45,27 @@ if (!isset($_SESSION['signinAdmin'])) {
 
             <tbody>
                 <?php
+                // phan trang + render
                 include '../model/hotel.php';
-                $result = selectAllHotel();
+                include '../controller/pagination.php';
+                $itemSelect = 6;
+                $countPage = countPageHotel($itemSelect);
+
+                $page = 1;
+                if(isset($_GET['page'])){
+                    $page = $_GET['page'];
+                }
+                $start = ($itemSelect*($page-1));
+                // if(isset($_GET['page']) || $_GET['page']!=1){
+                //     $end = $itemSelect*$page-1;
+                // }
+                $end = $itemSelect*$page;
+
+                $sqlSelectLimit = "select * from hotel_info limit $start , $end";
+                $conn = connectDB();
+
+                $result = mysqli_query($conn,$sqlSelectLimit);
+
                 while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
                     $nhahang = '';
                     $phonghop = '';
@@ -55,25 +76,36 @@ if (!isset($_SESSION['signinAdmin'])) {
                     $row[6] == 1 ? $phonghop = 'checked=true' : $phonghop = '';
                     $row[7] == 1 ? $damcuoi = 'checked=true' : $damcuoi = '';
                     $row[8] == 1 ? $massage = 'checked=true' : $massage = '';
-                    $row[10] == 1 ? $trangthai = 'Đang hoạt động' : $trangthai = 'Ngừng hoạt động';
+                    $row[10] == 1 ? $trangthai = 'checked=true' : $trangthai = '';
+
+                    $img = '';
+                    if ($row[11]) {
+                        $img = '<img src="../uploads/' . $row[11] . '" alt="img" class="preview-img" />';
+                    } else {
+                        $img = '<img src="../assets/img/background_body_2.jpeg" alt="img" class="preview-img"/>';
+                    }
                     echo '
                 <tr>
-                    <form action="" method="post">
-                    <th scope="row">' . $row[0] . '</th>
-                    <td><img style="height:100%;" alt="img hotel" src="' . $row[11] . '" /></td>
-                    <td><textarea class="item-input" type="text"> ' . $row[1] . ' </textarea></td>
-                    <td><textarea class="item-input" type="text"> ' . $row[2] . ' </textarea></td>
-                    <td><textarea class="item-input" type="text"> ' . $row[3] . ' </textarea></td>
-                    <td><textarea class="item-input" type="text"> ' . $row[4] . ' </textarea></td>
-                    <td><input class="item-input" type="checkbox" '.$nhahang.'></td>
-                    <td><input class="item-input" type="checkbox" '.$phonghop.'></td>
-                    <td><input class="item-input" type="checkbox" '.$damcuoi.'></td>
-                    <td><input class="item-input" type="checkbox" '.$massage.'></td>
-                    <td><textarea class="item-input" type="text"> ' . $row[9] . ' </textarea></td>
-                    <td><textarea class="item-input" type="text"> ' . $trangthai . ' </textarea></td>
+                    <form action="../controller/updateHotel.php" method="post" enctype="multipart/form-data">
+                    <td><input name="id_hotel" class="item-input" style="width: 30px; font-size:19px; font-weight: 700;" readonly value="' . $row[0] . '"/></td>
+                    <td><input name="img" id="file-' . $row[0] . '" class="input-img" type="file"/>
+                    <label for="file-' . $row[0] . '" class="label-img" id="label-' . $row[0] . '">
+                    ' . $img . '
+                    </label>
+                    </td>
+                    <td><textarea name="name_hotel" class="item-input" type="text"> ' . $row[1] . ' </textarea></td>
+                    <td><textarea name="phone" class="item-input" type="text"> ' . $row[2] . ' </textarea></td>
+                    <td><textarea name="place" class="item-input" type="text"> ' . $row[3] . ' </textarea></td>
+                    <td><textarea name="soluongphong" class="item-input" type="text"> ' . $row[4] . ' </textarea></td>
+                    <td><input name="nhahang" class="item-input" type="checkbox" ' . $nhahang . '></td>
+                    <td><input name="phonghop" class="item-input" type="checkbox" ' . $phonghop . '></td>
+                    <td><input name="damcuoi" class="item-input" type="checkbox" ' . $damcuoi . '></td>
+                    <td><input name="massage" class="item-input" type="checkbox" ' . $massage . '></td>
+                    <td><textarea name="mota" class="item-input" type="text"> ' . $row[9] . ' </textarea></td>
+                    <td><input name= "trangthai" class="item-input" type="checkbox" ' . $trangthai . ' /></td>
                     <td>
-                        <button type="submit" class="btn btn-primary btn-sm m-0 py-1 px-2 mr-1">Sửa</button>
-                        <button type="button" class="btn btn-danger btn-sm m-0 py-1 px-2">Xóa</button>
+                        <button type="submit" class="btn btn-primary btn-sm m-0 py-1 px-2 mr-1">Cập nhật</button>
+                        <a href="../controller/deleteHotel.php?id_hotel=' . $row[0] . '"><button type="button" class="btn btn-danger btn-sm m-0 py-1 px-2">Xóa</button></a>
                     </td>
                     </form>
                 </tr>
@@ -88,7 +120,58 @@ if (!isset($_SESSION['signinAdmin'])) {
         </table>
     </div>
 
+    <nav class="page-nav" aria-label="...">
+        <ul class="pagination pagination-lg">
 
+
+            <?php
+                for($i = 1 ; $i <= $countPage ; $i++){
+                    echo "<li class='page-item'><a class='page-link' href='./dashboard.php?page=$i'>$i</a></li>";
+                }
+                if(isset($conn)){
+                    mysqli_close($conn);
+                }
+            ?>
+
+        </ul>
+    </nav>
+
+
+
+    <div class="modal" id="modal">
+        <form class="form-post" id="form" action="../controller/insertHotel.php" enctype="multipart/form-data" method="post">
+            <input type="file" name="img" id="img-insert">
+            <label for="img-insert" id="label-insert">Chọn ảnh</label>
+            <input type="text" placeholder="Tên khách sạn" name="name_hotel">
+            <input type="text" placeholder="Số điện thoại" name="phone">
+            <input type="text" placeholder="Khu vực" name="place">
+            <input type="number" placeholder="Số lượng phòng" name="soluongphong">
+            <textarea style="width:80%;" type="text" placeholder="Mô tả" name="mota"></textarea>
+            <div class='box-check'>
+                <span>Nhà hàng</span>
+                <input type="checkbox" name="nhahang">
+
+            </div>
+            <div class='box-check'>
+                <span>Phòng họp</span>
+                <input type="checkbox" name="phonghop">
+
+            </div>
+            <div class='box-check'>
+                <span>Đám cưới</span>
+                <input type="checkbox" name="damcuoi">
+
+            </div>
+            <div class='box-check'>
+                <span>Massage</span>
+                <input type="checkbox" name="massage">
+
+            </div>
+
+
+            <button type="submit" class="btn btn-success">Thêm khách sạn</button>
+        </form>
+    </div>
 
     <!-- Table -->
     <script src="../assets/libs/autosize.min.js"></script>
@@ -96,6 +179,7 @@ if (!isset($_SESSION['signinAdmin'])) {
     <script>
         autosize(document.querySelectorAll('textarea'));
     </script>
+    <script src="../assets/js/dashboard.js"></script>
 </body>
 
 </html>
