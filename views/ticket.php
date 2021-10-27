@@ -1,8 +1,8 @@
 <?php
-// session_start();
-// if(!isset($_SESSION['loginSuccess'])){
-//     header('Location: ./signin.php');
-// }
+session_start();
+if(!isset($_SESSION['loginSuccess'])){
+    header('Location: ./signin.php');
+}
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 }
