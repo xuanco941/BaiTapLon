@@ -93,9 +93,6 @@
                         </tr>
                     </tbody>
                 </table>
-                <div class="col-sm-3 col-md-3">
-                <a class="btn btn-primary" href="pickticket.php" role="button">Đặt phòng</a>
-                </div>
             </div>
 
 

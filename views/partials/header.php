@@ -1,11 +1,12 @@
 
+<link rel="stylesheet" href="../assets/css/header.css">
 <nav id="navbar-pc" class="navbar navbar-expand-md navbar-light sticky-top " style="background-color: #e3f2fd;">
     <div class="container-fluid">
         
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav">
                 <li class="nav-item item-head">
-                    <a class="nav-link active" href="../index.php">Trang chủ</a>
+                    <a class="nav-link " href="../index.php">Trang chủ</a>
                 </li>
                 <li class="nav-item item-head">
                     <a class="nav-link" href="./ticket.php">Đặt vé nhanh</a>
@@ -64,4 +65,3 @@
         </ul>
     </div>
 </nav>
-
