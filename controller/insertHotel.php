@@ -16,7 +16,7 @@
         $trangthai = true;
 
         isset($_POST['phone']) ? $phone = $_POST['phone'] : $phone = '';
-        isset($_POST['name_hotel']) ? $name_hotel = $_POST['name_hotel'] : $name_hotel = '';
+        isset($_POST['name_hotel']) ? $name_hotel = trim($_POST['name_hotel'] , ' ') : $name_hotel = '';
         isset($_POST['place']) ? $place = $_POST['place'] : $place = '';
         isset($_POST['soluongphong']) ? $soluongphong = $_POST['soluongphong'] : $soluongphong = 0;
         isset($_POST['nhahang']) ? $nhahang = true : $nhahang = false;

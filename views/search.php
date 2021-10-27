@@ -18,25 +18,47 @@
 
     <div class="container">
         <div class="col spaceSearch">
-            <form action="" method="get" id="formSearch">
+            <form action="./search.php" method="get" id="formSearch">
                 <span class="brand">@</span>
-                <input type="search" name="search" id="inputSearch">
+                <input type="search" placeholder="Tên khách sạn" name="name_hotel" id="inputSearch">
                 <button type="submit" id="submitSearch">Tìm kiếm</button>
             </form>
             <div class="listUserSearch">
-                <a href="/{{this.username}}" class="userSearch">
-                    <div class="nameSearch">sadasdas</div>
-                    <img src="{{this.avatar}}" alt="avatar" srcset="" class="imgSearch">
-                </a>
+
+                <?php
+                include '../model/connectDB.php';
+                if (isset($_GET['name_hotel'])) {
+                    $con = connectDB();
+                    $name_hotel = $_GET['name_hotel'] . '%';
+                    $select = "select * from hotel_info where name_hotel like '$name_hotel'";
+                    $result = mysqli_query($con, $select);
+                    while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
+                        $img = '';
+                        if ($row[11]) {
+                            $img = 'src="../uploads/' . $row[11] . '"';
+                        } else {
+                            $img = 'src=../assets/img/noimg.jpg';
+                        }
+                        echo '
+                    <a href="./detail.php?id=' . $row[0] . '" class="userSearch">
+                        <div class="nameSearch">' . $row[1] . '</div>
+                        <img ' . $img . ' alt="avatar" srcset="" class="imgSearch">
+                        <div class="mota">'.$row[9].'</div>
+                    </a>
+                
+                ';
+                    }
+                    mysqli_close($con);
+                }
+                ?>
             </div>
         </div>
     </div>
     <?php
     include './partials/footer.php';
     ?>
-    <script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
-    </script>
 
 </body>
 
