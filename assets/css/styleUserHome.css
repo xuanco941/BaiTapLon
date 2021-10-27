@@ -53,3 +53,19 @@
     text-decoration: none !important;
     
 }
+.box-page{
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.elm-link{
+    text-decoration: none;
+}
+.card-text{
+    color: black;
+}
+.card:hover{
+    border: 5px solid wheat;
+}
