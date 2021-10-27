@@ -1,6 +1,6 @@
 <?php
     // Them ticket
-    include './model/ticket.php';
+    include '../model/ticket.php';
     if(isset($_POST['trangthai']) && isset($_POST['gmail']) && isset($_POST['hotel_name'])){
         $tenkhach = $_POST['tenkhach'] ;
         $gmail = $_POST['gmail'];
