@@ -90,10 +90,7 @@ if (isset($_GET['id'])) {
         </div>
     </nav>
     <div class="container-fluid">
-        <div class="text-center slogan my-4">
-            <h2>Nhanh chóng, tiện lợi số 1 Châu Phi
-            </h2>
-        </div>
+        
         <main>
 
             <table class="table my-4">
