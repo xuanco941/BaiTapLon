@@ -13,13 +13,8 @@
         $conn = connectDB();
         $sql = 'select * from hotel_info';
         $result = mysqli_query($conn,$sql);
-        $count = mysqli_num_rows($result);
-        if($count>=1){
-            return $result;
-        }
-        else{
-            echo 'loi lay du lieu tu bang hotel_info'; 
-        }
+        return $result;
+        
         mysqli_close($conn);
     }
 
