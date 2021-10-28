@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 26, 2021 lúc 10:44 AM
+-- Thời gian đã tạo: Th10 28, 2021 lúc 07:28 AM
 -- Phiên bản máy phục vụ: 10.4.21-MariaDB
 -- Phiên bản PHP: 8.0.12
 
@@ -62,13 +62,6 @@ CREATE TABLE `hotel_info` (
   `img` varchar(300) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Đang đổ dữ liệu cho bảng `hotel_info`
---
-
-INSERT INTO `hotel_info` (`id`, `name_hotel`, `phone`, `place`, `soluongphong`, `nhahang`, `phonghop`, `damcuoi`, `massage`, `mota`, `trangthai`, `img`) VALUES
-(1, 'Lonely Hotel', '0123456789', 'Ha Noi', 300, 1, 0, 1, 1, 'La khach san cho nguoi co don so 1 Chau Phi', 1, NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -84,15 +77,10 @@ CREATE TABLE `ticket` (
   `ngayketthuc` date DEFAULT NULL,
   `yeucau` text DEFAULT NULL,
   `chiphi` double DEFAULT NULL,
-  `trangthai` tinyint(1) NOT NULL
+  `trangthai` tinyint(1) DEFAULT NULL,
+  `id_hotel` int(11) DEFAULT NULL,
+  `id_user` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Đang đổ dữ liệu cho bảng `ticket`
---
-
-INSERT INTO `ticket` (`id`, `tenkhach`, `gmail`, `hotel_name`, `ngaydat`, `ngayketthuc`, `yeucau`, `chiphi`, `trangthai`) VALUES
-(1, 'Do Van Xuan', 'abc@gmail.com', 'Lonely Hotel', '2021-10-21', '2021-10-29', 'don toi luc 10h sang', 10000000, 1);
 
 -- --------------------------------------------------------
 
@@ -108,13 +96,6 @@ CREATE TABLE `user` (
   `code` varchar(100) NOT NULL,
   `phonenumber` varchar(15) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Đang đổ dữ liệu cho bảng `user`
---
-
-INSERT INTO `user` (`id`, `gmail`, `password`, `status`, `code`, `phonenumber`) VALUES
-(1, 'xuanco941@gmail.com', '$2y$10$IiRoIecEdUOhVeCjL6cucuhCiMHKI19p4Mg43SXZXHUN5ZGSFatAi', 1, '265', NULL);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -136,7 +117,9 @@ ALTER TABLE `hotel_info`
 -- Chỉ mục cho bảng `ticket`
 --
 ALTER TABLE `ticket`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_hotel` (`id_hotel`),
+  ADD KEY `id_user` (`id_user`);
 
 --
 -- Chỉ mục cho bảng `user`
@@ -158,19 +141,30 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT cho bảng `hotel_info`
 --
 ALTER TABLE `hotel_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT cho bảng `ticket`
 --
 ALTER TABLE `ticket`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `user`
 --
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Các ràng buộc cho các bảng đã đổ
+--
+
+--
+-- Các ràng buộc cho bảng `ticket`
+--
+ALTER TABLE `ticket`
+  ADD CONSTRAINT `ticket_ibfk_1` FOREIGN KEY (`id_hotel`) REFERENCES `hotel_info` (`id`),
+  ADD CONSTRAINT `ticket_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -23,17 +23,17 @@ session_start();
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav">
           <li class="nav-item item-head">
-            <a class="nav-link " href="index.php">Trang chủ</a>
+            <a id="trangchu" class="nav-link " href="index.php">Trang chủ</a>
           </li>
           <li class="nav-item item-head">
-            <a class="nav-link" href="./views/pickticket.php">Đặt vé nhanh</a>
+            <a id="datvenhanh" class="nav-link" href="./views/pickticket.php">Đặt vé nhanh</a>
           </li>
         </ul>
 
         <ul class="navbar-nav ms-auto">
           <li>
             <form action="./views/search.php" method="GET" class="input-group search_mb">
-              <input type="text" class="form-control" placeholder="Nhập tên khách sạn" aria-label="search" name="name_hotel" required>
+              <input type="text" class="form-control" placeholder="Nhập tên khách sạn" aria-label="search" name="name_hotel" >
               <a class="btn btn-primary" href="#" role="button"><button style="color: inherit; background-color:inherit; border:none;" type="submit">Tìm kiếm</button></a>
             </form>
           </li>

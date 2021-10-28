@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,22 +33,29 @@
                     $name_hotel = $_GET['name_hotel'] . '%';
                     $select = "select * from hotel_info where name_hotel like '$name_hotel'";
                     $result = mysqli_query($con, $select);
-                    while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
-                        $img = '';
-                        if ($row[11]) {
-                            $img = 'src="../uploads/' . $row[11] . '"';
-                        } else {
-                            $img = 'src=../assets/img/noimg.jpg';
+                    $count = mysqli_num_rows($result);
+                    if ($count >= 1) {
+                        while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
+                            $img = '';
+                            if ($row[11]) {
+                                $img = 'src="../uploads/' . $row[11] . '"';
+                            } else {
+                                $img = 'src=../assets/img/noimg.jpg';
+                            }
+                            echo '
+                        <a href="./detail.php?product=' . $row[0] . '" class="userSearch">
+                            <div class="nameSearch">' . $row[1] . '</div>
+                            <img ' . $img . ' alt="avatar" srcset="" class="imgSearch">
+                            <div class="mota">' . $row[9] . '</div>
+                        </a>
+                    
+                    ';
                         }
-                        echo '
-                    <a href="./detail.php?id=' . $row[0] . '" class="userSearch">
-                        <div class="nameSearch">' . $row[1] . '</div>
-                        <img ' . $img . ' alt="avatar" srcset="" class="imgSearch">
-                        <div class="mota">'.$row[9].'</div>
-                    </a>
-                
-                ';
                     }
+                    else{
+                        echo '<h1 style="color:white; margin-top: 80px;">Không có thông tin nào về khách sạn này</h1>';
+                    }
+
                     mysqli_close($con);
                 }
                 ?>
@@ -57,7 +65,7 @@
     <?php
     include './partials/footer.php';
     ?>
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 
 </body>
