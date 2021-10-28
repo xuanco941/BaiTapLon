@@ -11,7 +11,9 @@ session_start();
         $yeucau = $_POST['yeucau'];
         $chiphi = $_POST['chiphi'];
         $trangthai = $_POST['trangthai'];
-        if(insertTicket($tenkhach,$gmail,$hotel_name,$ngaydat,$ngayketthuc,$yeucau,$chiphi,$trangthai)){
+        $id_hotel = $_POST['id_hotel'];
+        $id_user = $_POST['id_user'];
+        if(insertTicket($tenkhach,$gmail,$hotel_name,$ngaydat,$ngayketthuc,$yeucau,$chiphi,$trangthai,$id_hotel,$id_user)){
             header('Location: ../views/ticket.php?gmail='.$gmail.'');
         }
         else{
