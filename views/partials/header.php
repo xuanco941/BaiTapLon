@@ -44,7 +44,7 @@
 
 <nav id="navbar-mb" class="navbar navbar-expand-md navbar-light sticky-top " style="background-color: #e3f2fd;">
     <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" style="width:148px" data-bs-toggle="dropdown" aria-expanded="false">
             Menu
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
@@ -64,4 +64,5 @@
 
         </ul>
     </div>
+    <a style="font-size:20px ; text-decoration: none; color: black; position:absolute; top:0; right:0; margin-top:8px;" href="../index.php"><button style="width:148px;" class="btn btn-secondary">Trang chủ</button></a>
 </nav>

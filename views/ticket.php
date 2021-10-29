@@ -33,15 +33,15 @@ if (!isset($_SESSION['loginSuccess'])) {
     <div class="container">
         <h3 class="text-center" style="color: #fff!important;padding: 10px; font-size:2.5rem; background: cadetblue;">Vé đã đặt: </h3>
 
-        <table class="table">
+        <table class="table" style="text-align: center;">
             <thead>
                 <tr style="color: white;">
                     <th scope="col">#</th>
                     <th scope="col">Khách sạn</th>
-                    <th scope="col">Khu vực</th>
                     <th scope="col">Ngày đặt</th>
                     <th scope="col">Ngày kết thúc</th>
                     <th scope="col">Chi phí</th>
+                    <th scope="col">Trạng thái</th>
                 </tr>
             </thead>
             <tbody>
@@ -56,19 +56,20 @@ if (!isset($_SESSION['loginSuccess'])) {
 
                 
 
-                $sql = "SELECT * FROM ticket, hotel_info WHERE id_user = (SELECT id FROM user WHERE gmail = '$gmail') and ticket.id_hotel=hotel_info.id";
+                $sql = "SELECT * FROM ticket WHERE id_user = (SELECT id FROM user WHERE gmail = '$gmail')";
                 $result = mysqli_query($conn, $sql);
                 $i = 1;
                 while ($row = mysqli_fetch_assoc($result)) {
+                  $row['trangthai'] == 1 ? $trangthai = 'Đã đặt thành công' : $trangthai = 'Đang chờ';
                 ?>
 
                     <tr style="color: white;">
                         <th scope="row"><?php echo $i; ?></th>
                         <td style="font-size: 1.2rem;"><?php echo $row['hotel_name']; ?></td>
-                        <td style="font-size: 1.2rem;"><?php echo $row['place']; ?></td>
                         <td style="font-size: 1.2rem;"><?php echo $row['ngaydat']; ?></td>
                         <td style="font-size: 1.2rem;"><?php echo $row['ngayketthuc']; ?></td>
                         <td style="font-size: 1.2rem;"><?php echo $row['chiphi'] . 'đ'; ?></td>
+                        <td style="font-size: 1.2rem;"><?php echo $trangthai; ?></td>
                     </tr>
                 <?php
                     $i++;
@@ -84,10 +85,6 @@ if (!isset($_SESSION['loginSuccess'])) {
 
 
 
-
-    <?php
-    include './partials/footer.php'
-    ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>

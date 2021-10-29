@@ -33,7 +33,7 @@ session_start();
         <ul class="navbar-nav ms-auto">
           <li>
             <form action="./views/search.php" method="GET" class="input-group search_mb">
-              <input type="text" class="form-control" placeholder="Nhập tên khách sạn" aria-label="search" name="name_hotel" >
+              <input type="text" class="form-control" placeholder="Nhập tên khách sạn" aria-label="search" name="name_hotel">
               <a class="btn btn-primary" href="#" role="button"><button style="color: inherit; background-color:inherit; border:none;" type="submit">Tìm kiếm</button></a>
             </form>
           </li>
@@ -81,6 +81,7 @@ session_start();
 
       </ul>
     </div>
+    <a style="font-size:20px ; text-decoration: none; color: black; position:absolute; top:0; right:0; margin-top:8px;" href="./index.php"><button style="width:148px;" class="btn btn-secondary">Trang chủ</button></a>
   </nav>
 
   <nav>

@@ -20,8 +20,8 @@
 
     function insertTicket($tenkhach,$gmail,$hotel_name,$ngaydat,$ngayketthuc,$yeucau,$chiphi,$trangthai,$id_hotel,$id_user){
         $conn = connectDB();
-        $sql = "INSERT INTO `ticket`(`tenkhach`, `gmail`, `hotel_name`, `ngaydat`, `ngayketthuc`, `yeucau`, `chiphi`, `trangthai` , `id_hotel`,`id_user`) 
-        VALUES ('$tenkhach','$gmail','$hotel_name','$ngaydat','$ngayketthuc','$yeucau',$chiphi,$trangthai,$id_hotel,$id_user)";
+        $sql = "INSERT INTO ticket ( tenkhach, gmail, hotel_name, ngaydat, ngayketthuc, yeucau, chiphi, trangthai , id_hotel , id_user) 
+        VALUES ('$tenkhach','$gmail','$hotel_name','$ngaydat','$ngayketthuc','$yeucau','$chiphi','$trangthai','$id_hotel','$id_user')";
         $result = mysqli_query($conn,$sql);
         if($result==true){
             return true;
