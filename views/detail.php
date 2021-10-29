@@ -150,9 +150,11 @@
                         ?>
                     </tbody>
                 </table>
-                <div class="col my-4">
-                    <a class="btn btn-primary" href="pickticket.php" role="button">Đặt phòng</a>
-                </div>
+                <?php
+                echo'<div class="col my-4">';
+                    echo'<a class="btn btn-primary" href="pickticket.php?id='.$id_hotel.'" role="button">Đặt phòng</a>';
+                echo'</div>';
+                ?>
             </div>
 
 
