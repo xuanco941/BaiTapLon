@@ -32,6 +32,7 @@
         $gmail = $_SESSION['loginSuccess'];
     }
     $id_hotel = $_GET['id'];
+    $sql_1 ="select id from `user` where gmail = '$gmail'";
     $sql = "SELECT * FROM `hotel_info` WHERE id = $id_hotel ";
     $conn = connectDB();
     $result = mysqli_query($conn, $sql);
@@ -49,10 +50,14 @@
             $mota = $row['mota'];
             $status = $row['trangthai'];
             $img = $row['img'];
+            
         } else {
             header("location:error.php");
         }
     }
+    $result_2 = mysqli_query($conn,$sql_1);
+    $row2 = mysqli_fetch_assoc($result_2);
+    $id_user = $row2['id'];    
 ?>
 
      <nav>
@@ -103,11 +108,21 @@
                                  </div>
                              </div>
                              <div class="form-group row my-4">
+                                 <label class="col-sm-2 col-form-label">chi phi</label>
+                                 <div class="col-sm-10">
+                                     <textarea style="resize: none;" id="chiphi" name="chiphi" class="form-control txtContactNotes" rows="3"></textarea>
+                                 </div>
+                                <input type="number" name="id_user" style="display: none;" readonly value="<?php echo $id_user; ?>">
+                                <input type="number" name="trangthai" style ="display :none;" readonly value="1">
+                                <input type="number" name="id_hotel" style="display: none;" readonly value="<?php echo $id_hotel; ?>">
+
+                             </div>
+                             <div class="form-group row my-4">
                                  <input class="col-sm-2 my-2" type="checkbox" class="custom-control-input" id="customControlAutosizing">
                                  <label for="" class="col-sm-10">Tôi đã đọc và chấp nhận các chính sách,điều khoản của khách sạn</label>
                              </div>
                              <div class="form-group row my-4">
-                                 <a class="btn btn-primary" href="ticket.php" role="button">đặt phòng</a>
+                             <button type="submit" class="btn btn-dark">dat phong</button>
                              </div>
                          </form>
                      </div>
