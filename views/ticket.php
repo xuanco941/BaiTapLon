@@ -31,7 +31,7 @@ if (!isset($_SESSION['loginSuccess'])) {
 
 
     <div class="container">
-        <h3 class="text-center" style="color: #fff!important;padding: 10px; font-size:2.5rem; background: cadetblue;">Vé đã đặt: </h3>
+        <h3 class="text-center" style="color: #fff!important;padding: 10px; font-size:2.5rem; background: cadetblue;">Vé đã đặt </h3>
 
         <table class="table" style="text-align: center;">
             <thead>

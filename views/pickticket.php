@@ -15,7 +15,9 @@ if (!isset($_SESSION['loginSuccess'])) {
     <link rel="stylesheet" href="../assets/css/header.css">
     <link rel="stylesheet" href="../assets/css/main.css">
     <style>
-        tr,th,td {
+        tr,
+        th,
+        td {
             color: white;
         }
     </style>
@@ -34,50 +36,70 @@ if (!isset($_SESSION['loginSuccess'])) {
 
     <?php
     include '../model/hotel.php';
-    $gmail = '';
-    if (isset($_SESSION['loginSuccess'])) {
-        $gmail = $_SESSION['loginSuccess'];
-    }
-    $id_hotel = $_GET['id'];
-    $sql_1 = "select id from `user` where gmail = '$gmail'";
-    $sql = "SELECT * FROM `hotel_info` WHERE id = $id_hotel ";
     $conn = connectDB();
-    $result = mysqli_query($conn, $sql);
-    if ($result == true) {
-        $count = mysqli_num_rows($result);
-        if ($count == 1) {
-            $row = mysqli_fetch_assoc($result);
-            $nameHotel = $row['name_hotel'];
-            $phoneHotel = $row['phone'];
-            $place = $row['place'];
-            $soluongphong = $row['soluongphong'];
-            $nhahang = $row['nhahang'];
-            $phonghop = $row['damcuoi'];
-            $massage = $row['massage'];
-            $mota = $row['mota'];
-            $status = $row['trangthai'];
-            $img = $row['img'];
-        } else {
-            header("Location: error.php");
-        }
-    }
-    $result_2 = mysqli_query($conn, $sql_1);
+    $gmail = $_SESSION['loginSuccess'];
+    $sql_2 = "select id from `user` where gmail = '$gmail'";
+    $result_2 = mysqli_query($conn, $sql_2);
     $row2 = mysqli_fetch_assoc($result_2);
     $id_user = $row2['id'];
+
+
+
+
+    //Nếu không có id sản phẩm được truyền trên url thì sẽ 
+    if (isset($_GET['id'])) {
+        $id_hotel = $_GET['id'];
+        $sql = "SELECT * FROM `hotel_info` WHERE id = $id_hotel ";
+        $result = mysqli_query($conn, $sql);
+        if ($result == true) {
+            $count = mysqli_num_rows($result);
+            if ($count == 1) {
+                $row = mysqli_fetch_assoc($result);
+                $nameHotel = $row['name_hotel'];
+                $phoneHotel = $row['phone'];
+                $place = $row['place'];
+                $soluongphong = $row['soluongphong'];
+                $nhahang = $row['nhahang'];
+                $phonghop = $row['phonghop'];
+                $damcuoi = $row['damcuoi'];
+                $massage = $row['massage'];
+                $mota = $row['mota'];
+                $trangthai = $row['trangthai'];
+                $img_name = $row['img'];
+                $img = "../uploads/$img_name";
+            } else {
+                header("Location: error.php");
+            }
+        }
+    } else {
+        $nameHotel = 'Bạn chưa chọn nhà hàng';
+        $phoneHotel = 'Bạn chưa chọn nhà hàng';
+        $place = 'Bạn chưa chọn nhà hàng';
+        $soluongphong = 'Bạn chưa chọn nhà hàng';
+        $nhahang = 0;
+        $phonghop = 0;
+        $damcuoi = 0;
+        $massage = 0;
+        $mota = 'Bạn chưa chọn nhà hàng';
+        $trangthai = 0;
+        $img = "../assets/img/noimg.jpg";
+    }
+
+
     ?>
 
     <nav>
         <div class="container">
             <div class="text-center my-4">
-            <h1 style="color: white; font-style:italic">Điền nội dung vé
+                <h1 style="color: white; font-style:italic">Điền nội dung vé
                 </h1>
             </div>
             <div class="row" style="color:white;">
-            
+
                 <div class="col-xs-12 col-sm-7">
                     <h3 class="h2 subtitle sub_booking" style="background-color: #86b817!important;color: #fff!important;padding: 10px;">Thông tin liên hệ</h3>
                     <div class="fieldcontain">
-                        <form method="post" action="../controller/insertTicket.php">
+                        <form method="post" id="form_ticket" action="../controller/insertTicket.php">
                             <div class="form-group row my-4">
                                 <label class="col-sm-2 col-form-label">Họ và Tên</label>
                                 <div class="col-sm-10">
@@ -90,11 +112,30 @@ if (!isset($_SESSION['loginSuccess'])) {
                                     <input type="text" readonly class="form-control" id="gmail" name="gmail" value=<?php echo $gmail  ?>>
                                 </div>
                             </div>
+
                             <div class="form-group row my-4">
-                                <label class="col-sm-2 col-form-label">Khách sạn </label>
+                                <label for="name_hotel" class="col-sm-2 col-form-label">Khách sạn </label>
                                 <div class="col-sm-10">
-                                    <input type="text" readonly class="form-control" id="name_hotel" name="name_hotel" value=<?php echo $row['name_hotel']; ?>>
+                                    <select class="form-select" id="name_hotel" name="name_hotel" aria-label="Khách sạn">
+                                        <?php
+                                        if (isset($_GET['id'])) {
+                                            echo "<option class='name_hotel_item' selected value=$nameHotel>$nameHotel</option>";
+                                        }
+                                        ?>
+
+                                        <?php
+                                        $sql_name_hotel = "select name_hotel from hotel_info";
+                                        $exec = mysqli_query($conn, $sql_name_hotel);
+                                        while ($name_hotels = mysqli_fetch_array($exec, MYSQLI_NUM)) {
+                                            echo "<option class='name_hotel_item' value='$name_hotels[0]'>$name_hotels[0]</option>";
+                                        }
+                                        ?>
+
+
+                                    </select>
                                 </div>
+
+
                             </div>
                             <div class="form-group row my-4">
                                 <label class="col-sm-2 col-form-label">Ngày đặt</label>
@@ -115,47 +156,47 @@ if (!isset($_SESSION['loginSuccess'])) {
                                 </div>
                             </div>
                             <div class="form-group row my-4">
-                                <label class="col-sm-2 col-form-label">Chi phí</label>
+                                <label class="col-sm-2 col-form-label">Chi phí ($)</label>
                                 <div class="col-sm-10">
-                                    <input id="chiphi" name="chiphi" class="form-control txtContactNotes">
+                                    <input id="chiphi" placeholder="20$ 1 ngày" name="chiphi" type="number" readonly class="form-control txtContactNotes">
                                 </div>
                                 <input type="number" name="id_user" style="display: none;" readonly value="<?php echo $id_user; ?>">
-                                <input type="number" name="trangthai" style="display :none;" readonly value = '1'>
-                                <input type="number" name="id_hotel" style="display: none;" readonly value="<?php echo $id_hotel; ?>">
+                                <input type="number" name="trangthai" style="display :none;" readonly value='1'>
+                                <input type="number" id="id_hotel_ajax" name="id_hotel" style="display: none;" readonly value="<?php echo $id_hotel; ?>">
 
                             </div>
                             <div class="form-group row my-4">
-                                <input class="col-sm-2 my-2" type="checkbox" class="custom-control-input" id="customControlAutosizing">
+                                <input class="col-sm-2 my-2" type="checkbox" checked='true' class="custom-control-input" id="customControlAutosizing">
                                 <label for="" class="col-sm-10">Tôi đã đọc và chấp nhận các chính sách,điều khoản của khách sạn</label>
                             </div>
                             <div class="form-group row my-4">
-                                <button type="submit" class="btn btn-dark">Đặt</button>
+                                <button type="submit" id="btn-submit" class="btn btn-dark">Đặt</button>
                             </div>
                         </form>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-5">
                     <h3 class="h2 subtitle sub_booking" style="background-color: #86b817!important;color: #fff!important;padding: 10px;">Thông tin phòng</h3>
-                    <img class="col-sm-12 my-2" width="255px" height="160px" src="../assets/img/a.jpg" alt="">
+                    <img id="img_hotel_ajax" class="col-sm-12 my-2 img-fluid" src="<?php echo $img; ?>" alt="img hotel">
                     <div class="col-xs-12" style="padding: 20px 0 0 20px;">
                         <table class="table table-striped">
                             <tbody>
                                 <?php
                                 echo '<tr>';
                                 echo '<th scope="row" class="col-sm-3 col-md-3 col-lg-3" style="font-size: 1.3rem; color: #ffc107"> <i class="fas fa-synagogue"></i> Khách sạn: </th>';
-                                echo '<td class="col-sm-9 col-md-9 col-lg-9" style="font-size: 1.5rem;color:wheat;">' . $row['name_hotel'] . '.</td>';
+                                echo '<td class="col-sm-9 col-md-9 col-lg-9" id="name_hotel_ajax" style="font-size: 1.5rem;color:wheat;">' . $nameHotel . '.</td>';
                                 echo '</tr>';
                                 echo '<tr>';
                                 echo '<th scope="row" class="col-sm-3 col-md-3 col-lg-3"> <i class="fas fa-phone"></i> Số điện thoại liên hệ: </th>';
-                                echo '<td class="col-sm-9 col-md-9 col-lg-9">' . $row['phone'] . '</td>';
+                                echo '<td class="col-sm-9 col-md-9 col-lg-9" id="phone_hotel_ajax">' . $phoneHotel . '</td>';
                                 echo '</tr>';
                                 echo '<tr>';
                                 echo '<th scope="row" class="col-sm-3 col-md-3 col-lg-3"> <i class="fas fa-map-marked-alt"></i> Địa điểm: </th>';
-                                echo '<td class="col-sm-9 col-md-9 col-lg-9">' . $row['place'] . '</td>';
+                                echo '<td class="col-sm-9 col-md-9 col-lg-9" id="place_hotel_ajax">' . $place . '</td>';
                                 echo '</tr>';
                                 echo '<tr>';
                                 echo '<th scope="row" class="col-sm-3 col-md-3 col-lg-3"> <i class="fad fa-house-flood"></i> Số lượng phòng: </th>';
-                                echo '<td class="col-sm-9 col-md-9 col-lg-9">' . $row['soluongphong'] . '</td>';
+                                echo '<td class="col-sm-9 col-md-9 col-lg-9" id="soluongphong_hotel_ajax">' . $soluongphong . '</td>';
                                 echo '</tr>';
                                 echo '<tr>';
                                 echo '<th scope="row" class="col-sm-3 col-md-3 col-lg-3" style="font-size: 1.3rem; color: #ffc107"> <i class="fas fa-server"></i> Dịch vụ: </th>';
@@ -163,47 +204,47 @@ if (!isset($_SESSION['loginSuccess'])) {
                                 echo '</tr>';
                                 echo '<tr>';
                                 echo '<th scope="row" class="col-sm-3 col-md-3 col-lg-3"> <i class="fas fa-turkey"></i> Nhà hàng: </th>';
-                                if ($row['nhahang'] == 1) {
-                                    echo '<td class="col-sm-9 col-md-9 col-lg-9">Còn phòng</td>';
+                                if ($nhahang == 1) {
+                                    echo '<td class="col-sm-9 col-md-9 col-lg-9" id="nhahang_hotel_ajax">Có</td>';
                                 } else {
-                                    echo '<td class="col-sm-9 col-md-9 col-lg-9">Hết phòng</td>';
+                                    echo '<td class="col-sm-9 col-md-9 col-lg-9" id="nhahang_hotel_ajax">Không</td>';
                                 }
                                 echo '</tr>';
                                 echo '<tr>';
                                 echo '<th scope="row" class="col-sm-3 col-md-3 col-lg-3"> <i class="far fa-handshake"></i> Phòng họp: </th>';
-                                if ($row['phonghop'] == 1) {
-                                    echo '<td class="col-sm-9 col-md-9 col-lg-9">Còn phòng</td>';
+                                if ($phonghop == 1) {
+                                    echo '<td class="col-sm-9 col-md-9 col-lg-9" id="phonghop_hotel_ajax">Có</td>';
                                 } else {
-                                    echo '<td class="col-sm-9 col-md-9 col-lg-9">Hết phòng</td>';
+                                    echo '<td class="col-sm-9 col-md-9 col-lg-9" id="phonghop_hotel_ajax">Không</td>';
                                 }
                                 echo '</tr>';
                                 echo '<tr>';
                                 echo '<th scope="row" class="col-sm-3 col-md-3 col-lg-3"> <i class="far fa-rings-wedding"></i> Đám cưới: </th>';
-                                if ($row['phonghop'] == 1) {
-                                    echo '<td class="col-sm-9 col-md-9 col-lg-9">Còn phòng</td>';
+                                if ($damcuoi == 1) {
+                                    echo '<td class="col-sm-9 col-md-9 col-lg-9" id="damcuoi_hotel_ajax">Có</td>';
                                 } else {
-                                    echo '<td class="col-sm-9 col-md-9 col-lg-9">Hết phòng</td>';
+                                    echo '<td class="col-sm-9 col-md-9 col-lg-9" id="damcuoi_hotel_ajax">Không</td>';
                                 }
                                 echo '</tr>';
                                 echo '<tr>';
-                                echo '<th scope="row" class="col-sm-3 col-md-3 col-lg-3" > <i class="fas fa-comments-alt"></i> Message: </th>';
-                                if ($row['massage'] == 1) {
-                                    echo '<td class="col-sm-9 col-md-9 col-lg-9">Còn phòng</td>';
+                                echo '<th scope="row" class="col-sm-3 col-md-3 col-lg-3" > <i class="fas fa-comments-alt"></i> Massage: </th>';
+                                if ($massage == 1) {
+                                    echo '<td class="col-sm-9 col-md-9 col-lg-9" id="massage_hotel_ajax">Có</td>';
                                 } else {
-                                    echo '<td class="col-sm-9 col-md-9 col-lg-9">Hết phòng</td>';
+                                    echo '<td class="col-sm-9 col-md-9 col-lg-9" id="massage_hotel_ajax">Không</td>';
                                 }
 
                                 echo '</tr>';
                                 echo '<tr>';
                                 echo '<th scope="row" class="col-sm-3 col-md-3 col-lg-3"> <i class="fas fa-envelope-open-text"></i> Mô tả: </th>';
-                                echo '<td class="col-sm-9 col-md-9 col-lg-9">' . $row['mota'] . '</td>';
+                                echo '<td class="col-sm-9 col-md-9 col-lg-9" id="mota_hotel_ajax">' . $mota . '</td>';
                                 echo '</tr>';
                                 echo '<tr>';
                                 echo '<th scope="row" class="col-sm-3 col-md-3 col-lg-3"> <i class="far fa-calendar-check"></i> Trạng thái: </th>';
-                                if ($row['trangthai'] == 1) {
-                                    echo '<td class="col-sm-9 col-md-9 col-lg-9">Đang hoạt động</td>';
+                                if ($trangthai == 1) {
+                                    echo '<td class="col-sm-9 col-md-9 col-lg-9" id="trangthai_hotel_ajax">Đang hoạt động</td>';
                                 } else {
-                                    echo '<td class="col-sm-9 col-md-9 col-lg-9">Ngừng hoạt động</td>';
+                                    echo '<td class="col-sm-9 col-md-9 col-lg-9" id="trangthai_hotel_ajax">Ngừng hoạt động</td>';
                                 }
                                 echo '</tr>';
                                 ?>
@@ -221,9 +262,12 @@ if (!isset($_SESSION['loginSuccess'])) {
     include './partials/footer.php'
     ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.7/dayjs.min.js"></script>
 
-    </script>
+
+
+    <script src="../assets/js/ajaxPickTicket.js"></script>
 </body>
 
 </html>

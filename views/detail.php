@@ -42,7 +42,11 @@
             $massage = $row['massage'];
             $mota = $row['mota'];
             $status = $row['trangthai'];
-            $img = $row['img'];
+            if ($row['img']) {
+                $img = "../uploads/".$row['img'];
+              } else {
+                $img = '../assets/img/noimg.jpg';
+              }
         } else {
             header("location:error.php");
         }
@@ -61,13 +65,13 @@
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img style="height: 488px;" src="https://jackierealtor.vn/wp-content/uploads/2019/12/Stunning-beautiful-villa-for-rent-in-Vinhomes-Riverside-Long-Bien-District-Hanoi-20-1200x900.jpg?v=1595324778" class="d-block w-100" alt="...">
+                            <img style="height: 488px;" src="<?php echo $img; ?>" class="d-block w-100" alt="...">
                         </div>
                         <div class="carousel-item">
-                            <img style="height: 488px;" src="https://jackierealtor.vn/wp-content/uploads/2019/12/Stunning-beautiful-villa-for-rent-in-Vinhomes-Riverside-Long-Bien-District-Hanoi-21-1200x900.jpg?v=1595324782" class="d-block w-100" alt="...">
+                            <img style="height: 488px;" src="<?php echo $img; ?>" class="d-block w-100" alt="...">
                         </div>
                         <div class="carousel-item">
-                            <img style="height: 488px;" src="https://jackierealtor.vn/wp-content/uploads/2019/12/Stunning-beautiful-villa-for-rent-in-Vinhomes-Riverside-Long-Bien-District-Hanoi-12-1200x900.jpg?v=1595324746" class="d-block w-100" alt="...">
+                            <img style="height: 488px;" src="<?php echo $img; ?>" class="d-block w-100" alt="...">
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -156,7 +160,7 @@
                 </table>
                 <?php
                 echo'<div class="col my-4">';
-                    echo'<a class="btn btn-primary" href="pickticket.php?id='.$id_hotel.'" role="button">Đặt phòng</a>';
+                    echo'<a class="btn btn-success" href="pickticket.php?id='.$id_hotel.'" role="button">Đặt vé khách sạn này</a>';
                 echo'</div>';
                 ?>
             </div>
