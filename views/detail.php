@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -124,7 +127,6 @@
                         }else{
                             echo '<td class="col-sm-9 col-md-9 col-lg-9">Hết phòng</td>';
                         }
-                        echo '<td class="col-sm-9 col-md-9 col-lg-9">'.$row['damcuoi'].'</td>';
                         echo '</tr>';
                         echo '<tr>';
                         echo '<th scope="row" class="col-sm-3 col-md-3 col-lg-3" > <i class="fas fa-comments-alt"></i> Message: </th>';
@@ -135,6 +137,8 @@
                         }
                         
                         echo '</tr>';
+                        echo '<th scope="row" class="col-sm-3 col-md-3 col-lg-3" style="font-size: 1.5rem; color: #ffc107"> <i class="fas fa-server"></i> Thông tin: </th>';
+
                         echo '<tr>';
                         echo '<th scope="row" class="col-sm-3 col-md-3 col-lg-3"> <i class="fas fa-envelope-open-text"></i> Mô tả: </th>';
                         echo '<td class="col-sm-9 col-md-9 col-lg-9">'.$row['mota'].'</td>';
@@ -150,9 +154,11 @@
                         ?>
                     </tbody>
                 </table>
-                <div class="col my-4">
-                    <a class="btn btn-primary" href="pickticket.php" role="button">Đặt phòng</a>
-                </div>
+                <?php
+                echo'<div class="col my-4">';
+                    echo'<a class="btn btn-primary" href="pickticket.php?id='.$id_hotel.'" role="button">Đặt phòng</a>';
+                echo'</div>';
+                ?>
             </div>
 
 
