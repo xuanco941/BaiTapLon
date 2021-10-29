@@ -58,6 +58,7 @@
                 <div class="footer-form">
                     <button type="submit" id="btnSubmit" class="btn btn-success">Đăng nhập</button>
                     <a href="./signup.php"><button type="button" class="btn btn-outline-warning">Chưa có tài khoản?</button></a>
+                    <a href="../index.php"><button type="button" class="btn btn-outline-warning">Về trang chủ</button></a>
                 </div>
             </form>
 
