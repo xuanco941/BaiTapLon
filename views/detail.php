@@ -103,19 +103,37 @@
                         echo '</tr>';
                         echo '<tr>';
                         echo '<th scope="row" class="col-sm-3 col-md-3 col-lg-3"> <i class="fas fa-turkey"></i> Nhà hàng: </th>';
-                        echo '<td class="col-sm-9 col-md-9 col-lg-9">'.$row['nhahang'].'</td>';
+                        if($row['nhahang']==1){
+                            echo '<td class="col-sm-9 col-md-9 col-lg-9">Còn phòng</td>';
+                        }else{
+                            echo '<td class="col-sm-9 col-md-9 col-lg-9">Hết phòng</td>';
+                        }
                         echo '</tr>';
                         echo '<tr>';
                         echo '<th scope="row" class="col-sm-3 col-md-3 col-lg-3"> <i class="far fa-handshake"></i> Phòng họp: </th>';
-                        echo '<td class="col-sm-9 col-md-9 col-lg-9">'.$row['phonghop'].'</td>';
+                        if($row['phonghop']==1){
+                            echo '<td class="col-sm-9 col-md-9 col-lg-9">Còn phòng</td>';
+                        }else{
+                            echo '<td class="col-sm-9 col-md-9 col-lg-9">Hết phòng</td>';
+                        }
                         echo '</tr>';
                         echo '<tr>';
                         echo '<th scope="row" class="col-sm-3 col-md-3 col-lg-3"> <i class="far fa-rings-wedding"></i> Đám cưới: </th>';
+                        if($row['phonghop']==1){
+                            echo '<td class="col-sm-9 col-md-9 col-lg-9">Còn phòng</td>';
+                        }else{
+                            echo '<td class="col-sm-9 col-md-9 col-lg-9">Hết phòng</td>';
+                        }
                         echo '<td class="col-sm-9 col-md-9 col-lg-9">'.$row['damcuoi'].'</td>';
                         echo '</tr>';
                         echo '<tr>';
-                        echo '<th scope="row" class="col-sm-3 col-md-3 col-lg-3" style="font-size: 1.5rem; color: #ffc107;"> <i class="fas fa-comments-alt"></i> Message: </th>';
-                        echo '<td class="col-sm-9 col-md-9 col-lg-9">'.$row['massage'].'</td>';
+                        echo '<th scope="row" class="col-sm-3 col-md-3 col-lg-3" > <i class="fas fa-comments-alt"></i> Message: </th>';
+                        if($row['massage']==1){
+                            echo '<td class="col-sm-9 col-md-9 col-lg-9">Còn phòng</td>';
+                        }else{
+                            echo '<td class="col-sm-9 col-md-9 col-lg-9">Hết phòng</td>';
+                        }
+                        
                         echo '</tr>';
                         echo '<tr>';
                         echo '<th scope="row" class="col-sm-3 col-md-3 col-lg-3"> <i class="fas fa-envelope-open-text"></i> Mô tả: </th>';
@@ -123,13 +141,17 @@
                         echo '</tr>';
                         echo '<tr>';
                         echo '<th scope="row" class="col-sm-3 col-md-3 col-lg-3"> <i class="far fa-calendar-check"></i> Trạng thái: </th>';
-                        echo '<td class="col-sm-9 col-md-9 col-lg-9">'.$row['trangthai'].'</td>';
+                        if($row['trangthai']==1){
+                            echo '<td class="col-sm-9 col-md-9 col-lg-9">Còn phòng</td>';
+                        }else{
+                            echo '<td class="col-sm-9 col-md-9 col-lg-9">Hết phòng</td>';
+                        }
                         echo '</tr>';
                         ?>
                     </tbody>
                 </table>
                 <div class="col my-4">
-                    <a class="btn btn-primary" href="pickticket.php" role="button">Dat phong</a>
+                    <a class="btn btn-primary" href="pickticket.php" role="button">Đặt phòng</a>
                 </div>
             </div>
 
