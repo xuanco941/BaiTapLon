@@ -14,9 +14,37 @@
 
     <?php include './partials/header.php' ?>
 
-    <?php 
-        // Chỗ này để xem chi tiết , tôi viết cái đoạn ấn xem chi tiết đi vào đây sẽ có biến GET[product] rồi , biến này là id của khách sạn 
-        // nên sau khi ấn vào đặt vé ở đây sẽ gán cái id của khách sạn này vào link dẫn sang trang pickticket nhé  
+    <?php
+    // Chỗ này để xem chi tiết , tôi viết cái đoạn ấn xem chi tiết đi vào đây sẽ có biến GET[product] rồi , biến này là id của khách sạn 
+    // nên sau khi ấn vào đặt vé ở đây sẽ gán cái id của khách sạn này vào link dẫn sang trang pickticket nhé  
+    include '../model/hotel.php';
+    $gmail = '';
+    if (isset($_SESSION['loginSuccess'])) {
+        $gmail = $_SESSION['loginSuccess'];
+    }
+    $id_hotel = $_GET['product'];
+    $sql = "SELECT * FROM `hotel_info` WHERE id = $id_hotel ";
+    $conn = connectDB();
+    $result = mysqli_query($conn, $sql);
+    if ($result == true) {
+        $count = mysqli_num_rows($result);
+        if ($count == 1) {
+            $row = mysqli_fetch_assoc($result);
+            $nameHotel = $row['name_hotel'];
+            $phoneHotel = $row['phone'];
+            $place = $row['place'];
+            $soluongphong=$row['soluongphong'];
+            $nhahang = $row['nhahang'];
+            $phonghop = $row['damcuoi'];
+            $massage = $row['massage'];
+            $mota = $row['mota'];
+            $status = $row['trangthai'];
+            $img = $row['img'];
+        } else {
+            header("location:error.php");
+        }
+    }
+
     ?>
 
     <div class="container-fluid" style="padding: 0 3%; margin-bottom: 160px; margin-top: 30px">
@@ -52,56 +80,62 @@
             <div class="col-sm-12 col-md-12 col-lg-7" style="padding: 20px 0 0 20px;">
                 <table class="table table-striped">
                     <tbody>
-                        <tr>
-                            <th scope="row" class="col-sm-3 col-md-3 col-lg-3" style="font-size: 1.5rem; color: #ffc107"> <i class="fas fa-synagogue"></i> Khách sạn: </th>
-                            <td class="col-sm-9 col-md-9 col-lg-9" style="font-size: 1.5rem;">Mark</td>
-                        </tr>
-                        <tr>
-                            <th scope="row" class="col-sm-3 col-md-3 col-lg-3"> <i class="fas fa-phone"></i> Số điện thoại liên hệ: </th>
-                            <td class="col-sm-9 col-md-9 col-lg-9">Mark</td>
-                        </tr>
-                        <tr>
-                            <th scope="row" class="col-sm-3 col-md-3 col-lg-3"> <i class="fas fa-map-marked-alt"></i> Địa điểm: </th>
-                            <td class="col-sm-9 col-md-9 col-lg-9">Mark</td>
-                        </tr>
-                        <tr>
-                            <th scope="row" class="col-sm-3 col-md-3 col-lg-3"> <i class="fad fa-house-flood"></i> Số lượng phòng: </th>
-                            <td class="col-sm-9 col-md-9 col-lg-9">Mark</td>
-                        </tr>
-                        <tr>
-                            <th scope="row" class="col-sm-3 col-md-3 col-lg-3" style="font-size: 1.5rem; color: #ffc107"> <i class="fas fa-server"></i> Dịch vụ: </th>
-                            <td class="col-sm-9 col-md-9 col-lg-9"></td>
-                        </tr>
-                        <tr>
-                            <th scope="row" class="col-sm-3 col-md-3 col-lg-3"> <i class="fas fa-turkey"></i> Nhà hàng: </th>
-                            <td class="col-sm-9 col-md-9 col-lg-9">Mark</td>
-                        </tr>
-                        <tr>
-                            <th scope="row" class="col-sm-3 col-md-3 col-lg-3"> <i class="far fa-handshake"></i> Phòng họp: </th>
-                            <td class="col-sm-9 col-md-9 col-lg-9">Mark</td>
-                        </tr>
-                        <tr>
-                            <th scope="row" class="col-sm-3 col-md-3 col-lg-3"> <i class="far fa-rings-wedding"></i> Đám cưới: </th>
-                            <td class="col-sm-9 col-md-9 col-lg-9">Mark</td>
-                        </tr>
-                        <tr>
-                            <th scope="row" class="col-sm-3 col-md-3 col-lg-3" style="font-size: 1.5rem; color: #ffc107;"> <i class="fas fa-comments-alt"></i> Message: </th>
-                            <td class="col-sm-9 col-md-9 col-lg-9"></td>
-                        </tr>
-                        <tr>
-                            <th scope="row" class="col-sm-3 col-md-3 col-lg-3"> <i class="fas fa-envelope-open-text"></i> Mô tả: </th>
-                            <td class="col-sm-9 col-md-9 col-lg-9">Mark</td>
-                        </tr>
-                        <tr>
-                            <th scope="row" class="col-sm-3 col-md-3 col-lg-3"> <i class="far fa-calendar-check"></i> Trạng thái: </th>
-                            <td class="col-sm-9 col-md-9 col-lg-9">Mark</td>
-                        </tr>
+                        <?php
+                        echo '<tr>';
+                        echo '<th scope="row" class="col-sm-3 col-md-3 col-lg-3" style="font-size: 1.5rem; color: #ffc107"> <i class="fas fa-synagogue"></i> Khách sạn: </th>';
+                        echo '<td class="col-sm-9 col-md-9 col-lg-9" style="font-size: 1.5rem;">'.$row['name_hotel'].'.</td>';
+                        echo '</tr>';
+                        echo '<tr>';
+                        echo '<th scope="row" class="col-sm-3 col-md-3 col-lg-3"> <i class="fas fa-phone"></i> Số điện thoại liên hệ: </th>';
+                        echo '<td class="col-sm-9 col-md-9 col-lg-9">'.$row['phone'].'</td>';
+                        echo '</tr>';
+                        echo '<tr>';
+                        echo '<th scope="row" class="col-sm-3 col-md-3 col-lg-3"> <i class="fas fa-map-marked-alt"></i> Địa điểm: </th>';
+                        echo '<td class="col-sm-9 col-md-9 col-lg-9">'.$row['place'].'</td>';
+                        echo '</tr>';
+                        echo '<tr>';
+                        echo'<th scope="row" class="col-sm-3 col-md-3 col-lg-3"> <i class="fad fa-house-flood"></i> Số lượng phòng: </th>';
+                        echo'<td class="col-sm-9 col-md-9 col-lg-9">'.$row['soluongphong'].'</td>';
+                        echo'</tr>';
+                        echo '<tr>';
+                        echo '<th scope="row" class="col-sm-3 col-md-3 col-lg-3" style="font-size: 1.5rem; color: #ffc107"> <i class="fas fa-server"></i> Dịch vụ: </th>';
+                        echo '<td class="col-sm-9 col-md-9 col-lg-9"></td>';
+                        echo '</tr>';
+                        echo '<tr>';
+                        echo '<th scope="row" class="col-sm-3 col-md-3 col-lg-3"> <i class="fas fa-turkey"></i> Nhà hàng: </th>';
+                        echo '<td class="col-sm-9 col-md-9 col-lg-9">'.$row['nhahang'].'</td>';
+                        echo '</tr>';
+                        echo '<tr>';
+                        echo '<th scope="row" class="col-sm-3 col-md-3 col-lg-3"> <i class="far fa-handshake"></i> Phòng họp: </th>';
+                        echo '<td class="col-sm-9 col-md-9 col-lg-9">'.$row['phonghop'].'</td>';
+                        echo '</tr>';
+                        echo '<tr>';
+                        echo '<th scope="row" class="col-sm-3 col-md-3 col-lg-3"> <i class="far fa-rings-wedding"></i> Đám cưới: </th>';
+                        echo '<td class="col-sm-9 col-md-9 col-lg-9">'.$row['damcuoi'].'</td>';
+                        echo '</tr>';
+                        echo '<tr>';
+                        echo '<th scope="row" class="col-sm-3 col-md-3 col-lg-3" style="font-size: 1.5rem; color: #ffc107;"> <i class="fas fa-comments-alt"></i> Message: </th>';
+                        echo '<td class="col-sm-9 col-md-9 col-lg-9">'.$row['massage'].'</td>';
+                        echo '</tr>';
+                        echo '<tr>';
+                        echo '<th scope="row" class="col-sm-3 col-md-3 col-lg-3"> <i class="fas fa-envelope-open-text"></i> Mô tả: </th>';
+                        echo '<td class="col-sm-9 col-md-9 col-lg-9">'.$row['mota'].'</td>';
+                        echo '</tr>';
+                        echo '<tr>';
+                        echo '<th scope="row" class="col-sm-3 col-md-3 col-lg-3"> <i class="far fa-calendar-check"></i> Trạng thái: </th>';
+                        echo '<td class="col-sm-9 col-md-9 col-lg-9">'.$row['trangthai'].'</td>';
+                        echo '</tr>';
+                        ?>
                     </tbody>
                 </table>
+                <div class="col my-4">
+                    <a class="btn btn-primary" href="pickticket.php" role="button">Dat phong</a>
+                </div>
             </div>
 
 
         </div>
+
     </div>
 
 
