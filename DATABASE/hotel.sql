@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Oct 29, 2021 at 12:13 PM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 8.0.6
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th10 30, 2021 lúc 12:19 AM
+-- Phiên bản máy phục vụ: 10.4.21-MariaDB
+-- Phiên bản PHP: 8.0.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `hotel`
+-- Cơ sở dữ liệu: `hotel`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
+-- Cấu trúc bảng cho bảng `admin`
 --
 
 CREATE TABLE `admin` (
@@ -35,7 +35,7 @@ CREATE TABLE `admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `admin`
+-- Đang đổ dữ liệu cho bảng `admin`
 --
 
 INSERT INTO `admin` (`ID`, `taikhoan`, `matkhau`, `hoten`) VALUES
@@ -44,7 +44,7 @@ INSERT INTO `admin` (`ID`, `taikhoan`, `matkhau`, `hoten`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `hotel_info`
+-- Cấu trúc bảng cho bảng `hotel_info`
 --
 
 CREATE TABLE `hotel_info` (
@@ -62,17 +62,10 @@ CREATE TABLE `hotel_info` (
   `img` varchar(300) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `hotel_info`
---
-
-INSERT INTO `hotel_info` (`id`, `name_hotel`, `phone`, `place`, `soluongphong`, `nhahang`, `phonghop`, `damcuoi`, `massage`, `mota`, `trangthai`, `img`) VALUES
-(6, 'seahotel', '0335100852', 'ha noi', 1, 1, 0, 1, 0, 'dep lam ', 1, NULL);
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ticket`
+-- Cấu trúc bảng cho bảng `ticket`
 --
 
 CREATE TABLE `ticket` (
@@ -92,7 +85,7 @@ CREATE TABLE `ticket` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Cấu trúc bảng cho bảng `user`
 --
 
 CREATE TABLE `user` (
@@ -105,30 +98,23 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `user`
---
-
-INSERT INTO `user` (`id`, `gmail`, `password`, `status`, `code`, `phonenumber`) VALUES
-(2, 'quangtu104@gmail.com', '$2y$10$u5Fez1huUQi4qCjXWJYpKO7RcyqydTkeTdvAvJlPndTk85iX8/74W', 1, '387', NULL);
-
---
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `admin`
+-- Chỉ mục cho bảng `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `hotel_info`
+-- Chỉ mục cho bảng `hotel_info`
 --
 ALTER TABLE `hotel_info`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `ticket`
+-- Chỉ mục cho bảng `ticket`
 --
 ALTER TABLE `ticket`
   ADD PRIMARY KEY (`id`),
@@ -136,45 +122,45 @@ ALTER TABLE `ticket`
   ADD KEY `id_user` (`id_user`);
 
 --
--- Indexes for table `user`
+-- Chỉ mục cho bảng `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `admin`
+-- AUTO_INCREMENT cho bảng `admin`
 --
 ALTER TABLE `admin`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `hotel_info`
+-- AUTO_INCREMENT cho bảng `hotel_info`
 --
 ALTER TABLE `hotel_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `ticket`
+-- AUTO_INCREMENT cho bảng `ticket`
 --
 ALTER TABLE `ticket`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT cho bảng `user`
 --
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- Constraints for dumped tables
+-- Các ràng buộc cho các bảng đã đổ
 --
 
 --
--- Constraints for table `ticket`
+-- Các ràng buộc cho bảng `ticket`
 --
 ALTER TABLE `ticket`
   ADD CONSTRAINT `ticket_ibfk_1` FOREIGN KEY (`id_hotel`) REFERENCES `hotel_info` (`id`),
