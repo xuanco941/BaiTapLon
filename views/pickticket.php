@@ -65,35 +65,35 @@
                  <div class="col-xs-12 col-sm-7">
                      <h3 class="h2 subtitle sub_booking" style="background-color: #86b817!important;color: #fff!important;padding: 10px;">Thông tin liên hệ</h3>
                      <div class="fieldcontain">
-                         <form method="post" action="../controller/updateTicket.php">
+                         <form method="post" action="../controller/insertTicket.php">
                              <div class="form-group row my-4">
                                  <label class="col-sm-2 col-form-label">Họ và Tên</label>
                                  <div class="col-sm-10">
-                                     <input type="text" class="form-control" name="tenkhach"  >
+                                     <input type="text" class="form-control" id="tenkhach" name="tenkhach"  >
                                  </div>
                              </div>
                              <div class="form-group row my-4">
                                  <label class="col-sm-2 col-form-label">Gmail </label>
                                  <div class="col-sm-10">
-                                     <input type="text" readonly class="form-control" name="gmail" value=<?php echo $gmail  ?>>
+                                     <input type="text" readonly class="form-control" id="gmail" name="gmail" value=<?php echo $gmail  ?>>
                                  </div>
                              </div>
                              <div class="form-group row my-4">
                                  <label class="col-sm-2 col-form-label">Khách sạn </label>
                                  <div class="col-sm-10">
-                                     <input type="text" readonly class="form-control" name="name_hotel" value=<?php echo $row['hotel_name']; ?>  >
+                                     <input type="text" readonly class="form-control" id="name_hotel" name="name_hotel" value=<?php echo $row['name_hotel']; ?>  >
                                  </div>
                              </div>
                              <div class="form-group row my-4">
                                  <label class="col-sm-2 col-form-label">Ngày đặt</label>
                                  <div class="col-sm-10">
-                                     <input type="date" class="form-control" name="ngaydat">
+                                     <input type="date" class="form-control" id="ngaydat" name="ngaydat">
                                  </div>
                              </div>
                              <div class="form-group row my-4">
                                  <label class="col-sm-2 col-form-label">Ngày kết thúc</label>
                                  <div class="col-sm-10">
-                                     <input type="date" class="form-control " name="ngayketthuc">
+                                     <input type="date" class="form-control " id="ngayketthuc" name="ngayketthuc">
                                  </div>
                              </div>
                              <div class="form-group row my-4">
