@@ -31,9 +31,9 @@
 
             //tao 1 tai khoan voi status = false , code de kich hoat duoc ma hoa , key luu tren db , code gui ve client
             $sql2 = "insert into user (gmail,password,status,code) values ('$gmail','$password_hash','$status','$key')";
-            $result = mysqli_query($conn,$sql2);
+            $result2 = mysqli_query($conn,$sql2);
             //gui email kich hoat cho client
-            if($result==true){
+            if($result2==true){
                 $title = '[Kích hoạt tài khoản]';
                 $bodyContent = "<a 
                 style='background-color:darkgreen;color:white;'
