@@ -68,7 +68,7 @@ if (!isset($_SESSION['loginSuccess'])) {
                         <td style="font-size: 1.2rem;"><?php echo $row['hotel_name']; ?></td>
                         <td style="font-size: 1.2rem;"><?php echo $row['ngaydat']; ?></td>
                         <td style="font-size: 1.2rem;"><?php echo $row['ngayketthuc']; ?></td>
-                        <td style="font-size: 1.2rem;"><?php echo $row['chiphi'] . 'đ'; ?></td>
+                        <td style="font-size: 1.2rem;"><?php echo $row['chiphi'] . '$'; ?></td>
                         <td style="font-size: 1.2rem;"><?php echo $trangthai; ?></td>
                     </tr>
                 <?php
