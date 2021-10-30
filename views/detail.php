@@ -133,7 +133,7 @@
                         }
                         echo '</tr>';
                         echo '<tr>';
-                        echo '<th scope="row" class="col-sm-3 col-md-3 col-lg-3" > <i class="fas fa-comments-alt"></i> Message: </th>';
+                        echo '<th scope="row" class="col-sm-3 col-md-3 col-lg-3" > <i class="fad fa-spa"></i> Massage: </th>';
                         if($row['massage']==1){
                             echo '<td class="col-sm-9 col-md-9 col-lg-9">Còn phòng</td>';
                         }else{
