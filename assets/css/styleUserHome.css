@@ -13,9 +13,7 @@
 .card h5 {
     color: rgb(94, 94, 221);
 }
-.card{
-    margin-top: 20px;
-}
+
 .nav-link{
     font-size: 20px;
     font-weight: 700;
@@ -68,4 +66,7 @@
 }
 .card:hover{
     border: 5px solid wheat;
+}
+.box-ctent{
+    margin-top: 30px;
 }

@@ -23,10 +23,10 @@ if(isset($_POST["submit"])) {
 // }
 
 // gioi han kich thuoc anh
-if ($img["size"] > 500000) {
-  echo "kich thuoc qua lon";
-  $uploadOk = 0;
-}
+// if ($img["size"] > 500000) {
+//   echo "kich thuoc qua lon";
+//   $uploadOk = 0;
+// }
 
 // // chi cho upfile jpg , png , jpeg , gif
 // if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"

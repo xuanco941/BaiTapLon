@@ -1,3 +1,9 @@
+<?php
+session_start();
+if (isset($_SESSION['signinAdmin'])) {
+    header('Location: ./dashboard.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,7 +53,6 @@
                 </div>
                 <span class="notify" id="notify">
                     <?php
-                    session_start();
                     if (!isset($_SESSION['notify_admin'])) {
                         $_SESSION['notify_admin'] = '';
                     }

@@ -147,15 +147,15 @@ session_start();
       while ($row = mysqli_fetch_array($result, MYSQLI_NUM)) {
         $img = '';
         if ($row[11]) {
-          $img = '<img class="card-img-top" src="./uploads/' . $row[11] . '" alt="Card image cap">';
+          $img = '<img class="card-img-top" src="./uploads/' . $row[11] . '" alt="Card image cap" width=100% height: 300px>';
         } else {
-          $img = '<img src="./assets/img/noimg.jpg" alt="khong co img" class="card-img-top"/>';
+          $img = '<img src="./assets/img/noimg.jpg" alt="khong co img" class="card-img-top" width=100% height: 300px/>';
         }
         echo '
         
-        <div class="col-sm-4">
+        <div class="box-ctent col-sm-4">
         <a class="elm-link" href="./views/detail.php?product=' . $row[0] . '">
-        <div class="card ">
+        <div class="card " style="height: 100%">
           ' . $img . '
           <div class="card-body">
             <h5 class="card-title">' . $row[1] . '</h5>
@@ -173,7 +173,7 @@ session_start();
   </div>
 
 
-  <nav class="box-page" aria-label="...">
+  <nav class="box-page" style="margin-top: 80px;" aria-label="...">
     <ul class="pagination pagination-lg">
 
       <?php
@@ -198,7 +198,7 @@ session_start();
   <footer class="bg-light text-center text-lg-start">
     <div class="text-center p-3" style="background-color: #e3f2fd;">
       © 2021 Copyright:
-      <a href="https://github.com/xuanco941/BaiTapLon">Xuân-Tuấn-Tú</a>
+      <a href="https://github.com/xuanco941/BaiTapLon" target="blank">Xuân-Tuấn-Tú</a>
     </div>
   </footer>
 

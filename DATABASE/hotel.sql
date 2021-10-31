@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 30, 2021 lúc 12:19 AM
+-- Thời gian đã tạo: Th10 31, 2021 lúc 09:42 AM
 -- Phiên bản máy phục vụ: 10.4.21-MariaDB
 -- Phiên bản PHP: 8.0.12
 
@@ -61,6 +61,25 @@ CREATE TABLE `hotel_info` (
   `trangthai` tinyint(1) DEFAULT NULL,
   `img` varchar(300) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `hotel_info`
+--
+
+INSERT INTO `hotel_info` (`id`, `name_hotel`, `phone`, `place`, `soluongphong`, `nhahang`, `phonghop`, `damcuoi`, `massage`, `mota`, `trangthai`, `img`) VALUES
+(10, 'Bencoolen', '65-63360822', 'Singapore', 94, 1, 1, 1, 0, 'Chỉ cách Đường Orchard 3 phút đi bộ và cách Quảng trường Marina 5 phút lái xe.', 1, '1.jpg'),
+(11, 'Selegie', '65-63456116', 'Rochor, Singapore', 130, 1, 1, 1, 1, 'Khách sạn này cách Trung tâm Mustafa 0,6 mi (1 km) và cách Khu mua sắm phố Bugis 0,7 mi (1,1 km).', 1, '2.jpg'),
+(12, 'Park 22 Hotel Little India', '65-62917120', 'Little India, Singapore', 40, 0, 1, 0, 0, 'Cách Vườn bách thảo Gardens by the Bay và Sòng bạc Marina Bay Sands 10 phút lái xe.', 1, '3.jpg'),
+(13, 'Heritage', '43-1232134', 'Lào', 43, 0, 1, 1, 0, 'Heritage ở trung tâm Lào, cách Haji Lane (Phố) 5 phút đi bộ.', 1, '4.jpg'),
+(14, 'Khách Sạn FLC Quy Nhơn', '0388530075', 'Việt Nam', 96, 1, 0, 0, 1, 'Trải nghiệm chuyến nghỉ dưỡng đẳng cấp 5 sao tại đây.', 1, '5.jpg'),
+(15, 'VinHolidays', '0388123126', 'Việt Nam', 67, 1, 1, 0, 0, 'vị trí ngay Grand World dễ đi lại tham quan vui chơi trong khu United Của Vin.', 1, '6.jpg'),
+(16, 'Paos Sapa Leisure', '0388530004', 'Việt Nam', 97, 1, 1, 0, 1, 'Pao’s Sapa Leisure Hotel mang đến một chuyến nghỉ dưỡng nhẹ nhàng và thoải mái giữa một Sapa thơ mộng và trữ tình.', 1, '7.jpg'),
+(17, 'Cam Ranh Resort', '038135345', 'Việt Nam', 68, 1, 0, 1, 1, 'Tọa lạc tại vị trí đẹp và sở hữu kiến trúc tinh tế, khu resort cao cấp', 1, '8.jpg'),
+(18, 'Vinpearl Discovery', '073242523', 'Mông Cổ', 57, 0, 1, 0, 0, 'Sở hữu nhiều khu biệt thự nghỉ dưỡng sang trọng và cao cấp', 1, '9.jpg'),
+(19, 'Sunset Sanato Phú Quốc Hotel', '038853234', 'Việt Nam', 66, 1, 0, 0, 0, 'Buffet sáng hàng ngày được thiết kế với nhiều món ăn đa dạng và thực đơn hấp dẫn\r\n', 1, '10.jpg'),
+(20, 'Silk Path Grand Sapa Resort', '064367423', 'Việt Nam', 44, 1, 0, 0, 1, 'Ẩn mình trên ngọn đồi đẹp như tranh vẽ', 1, '11.jpg'),
+(21, 'Resort Sài Gòn Côn Đảo', '0483453', 'Việt Nam', 40, 1, 1, 1, 1, 'Miễn phí đưa đón sân bay/cảng theo lịch trình của resort', 1, '12.jpg'),
+(22, 'Love Pik', '23124366', 'Ấn Độ', 42, 1, 1, 1, 1, 'Ngay cạnh ven biển đầy sóng và gió.', 1, '13.jpg');
 
 -- --------------------------------------------------------
 
@@ -141,19 +160,19 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT cho bảng `hotel_info`
 --
 ALTER TABLE `hotel_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT cho bảng `ticket`
 --
 ALTER TABLE `ticket`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT cho bảng `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Các ràng buộc cho các bảng đã đổ

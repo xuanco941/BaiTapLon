@@ -22,7 +22,7 @@ if (!isset($_SESSION['signinAdmin'])) {
     <div class="head">
         <a href="./dashboard.php">Danh sách vé đã được đặt</a>
     </div>
-    
+
     <div class="container-fluid">
         <table class="table">
             <thead>
@@ -70,7 +70,7 @@ if (!isset($_SESSION['signinAdmin'])) {
                     // $ngayketthuc = '';
                     // $yeucau = '';
                     $row[8] == 1 ? $trangthai = 'checked=true' : $trangthai = '';
-                    
+
 
                     echo '
                 <tr>
@@ -122,11 +122,13 @@ if (!isset($_SESSION['signinAdmin'])) {
         </ul>
     </nav>
 
-        <a href="./dashboard.php" class="next-page">
-            <button type="button" style="height: 50px; margin-right:20px; font-size: 18px" class="btn btn-primary">Quản lý khách sạn <i class="fas fa-arrow-circle-right"></i></button>
-        </a>
+    <a href="./dashboard.php" class="next-page">
+        <button type="button" style="height: 50px; margin-right:20px; font-size: 18px" class="btn btn-primary">Quản lý khách sạn <i class="fas fa-arrow-circle-right"></i></button>
+    </a>
+    <a href="../controller/signoutAdmin.php" class="next-page" style="margin-top: 60px; margin-bottom:30px">
+        <button type="button" style="height: 50px; margin-right:20px; font-size: 18px;" class="btn btn-danger">Đăng xuất</i></button>
+    </a>
 
-    
 
     <!-- Table -->
     <script src="../assets/libs/autosize.min.js"></script>

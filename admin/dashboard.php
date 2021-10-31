@@ -65,6 +65,7 @@ if (!isset($_SESSION['signinAdmin'])) {
                 $conn = connectDB();
 
                 $result2 = mysqli_query($conn, $sqlSelectLimit);
+                $i=1;
 
                 while ($row = mysqli_fetch_array($result2, MYSQLI_NUM)) {
                     $nhahang = '';
@@ -87,7 +88,8 @@ if (!isset($_SESSION['signinAdmin'])) {
                     echo '
                 <tr>
                     <form action="../controller/updateHotel.php" method="post" enctype="multipart/form-data">
-                    <td><input name="id_hotel" class="item-input" style="width: 30px; font-size:19px; font-weight: 700;" readonly value="' . $row[0] . '"/></td>
+                    <td style="display: none;"><input name="id_hotel" class="item-input" style="width: 30px; font-size:19px; font-weight: 700;" readonly value="' . $row[0] . '"/></td>
+                    <td><input class="item-input" style="width: 30px; font-size:19px; font-weight: 700;" disabled value="' . $i . '"/></td>
                     <td><input name="img" id="file-' . $row[0] . '" class="input-img" type="file"/>
                     <label for="file-' . $row[0] . '" class="label-img" id="label-' . $row[0] . '">
                     ' . $img . '
@@ -110,6 +112,7 @@ if (!isset($_SESSION['signinAdmin'])) {
                     </form>
                 </tr>
                 ';
+                $i++;
                 }
 
                 ?>
@@ -140,7 +143,10 @@ if (!isset($_SESSION['signinAdmin'])) {
         </ul>
     </nav>
     <a href="./ticket.php" class="next-page">
-        <button type="button" style="height: 50px; margin-right:20px; font-size: 18px" class="btn btn-primary">Quản lý vé <i class="fas fa-arrow-circle-right"></i></button>
+        <button type="button" style="height: 50px; margin-right:20px; font-size: 18px;" class="btn btn-primary">Quản lý vé <i class="fas fa-arrow-circle-right"></i></button>
+    </a>
+    <a href="../controller/signoutAdmin.php" class="next-page" style="margin-top: 60px; margin-bottom:30px">
+        <button type="button" style="height: 50px; margin-right:20px; font-size: 18px;" class="btn btn-danger">Đăng xuất</i></button>
     </a>
 
 
