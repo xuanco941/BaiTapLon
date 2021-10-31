@@ -129,7 +129,7 @@ session_start();
       // phan trang + render
       include './model/hotel.php';
       include './controller/pagination.php';
-      $itemSelect = 12;
+      $itemSelect = 9;
       $countPage = countPageHotel($itemSelect);
 
       $page = 1;
@@ -198,7 +198,7 @@ session_start();
   <footer class="bg-light text-center text-lg-start">
     <div class="text-center p-3" style="background-color: #e3f2fd;">
       © 2021 Copyright:
-      <a class="text-info" href="#">TLU</a>
+      <a href="https://github.com/xuanco941/BaiTapLon">Xuân-Tuấn-Tú</a>
     </div>
   </footer>
 

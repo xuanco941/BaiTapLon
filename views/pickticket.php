@@ -72,15 +72,15 @@ if (!isset($_SESSION['loginSuccess'])) {
             }
         }
     } else {
-        $nameHotel = 'Bạn chưa chọn nhà hàng';
-        $phoneHotel = 'Bạn chưa chọn nhà hàng';
-        $place = 'Bạn chưa chọn nhà hàng';
-        $soluongphong = 'Bạn chưa chọn nhà hàng';
+        $nameHotel = 'Bạn chưa chọn khách sạn';
+        $phoneHotel = 'Bạn chưa chọn khách sạn';
+        $place = 'Bạn chưa chọn khách sạn';
+        $soluongphong = 'Bạn chưa chọn khách sạn';
         $nhahang = 0;
         $phonghop = 0;
         $damcuoi = 0;
         $massage = 0;
-        $mota = 'Bạn chưa chọn nhà hàng';
+        $mota = 'Bạn chưa chọn khách sạn';
         $trangthai = 0;
         $img = "../assets/img/noimg.jpg";
     }
@@ -140,13 +140,13 @@ if (!isset($_SESSION['loginSuccess'])) {
                             <div class="form-group row my-4">
                                 <label class="col-sm-2 col-form-label">Ngày đặt</label>
                                 <div class="col-sm-10">
-                                    <input type="date" class="form-control" id="ngaydat" name="ngaydat" value="2001-04-09">
+                                    <input type="date" class="form-control" id="ngaydat" name="ngaydat" value="2021-11-04">
                                 </div>
                             </div>
                             <div class="form-group row my-4">
                                 <label class="col-sm-2 col-form-label">Ngày kết thúc</label>
                                 <div class="col-sm-10">
-                                    <input type="date" class="form-control " id="ngayketthuc" name="ngayketthuc" value="2001-04-09">
+                                    <input type="date" class="form-control " id="ngayketthuc" name="ngayketthuc" value="2021-11-04">
                                 </div>
                             </div>
                             <div class="form-group row my-4">

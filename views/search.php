@@ -30,7 +30,7 @@
                 include '../model/connectDB.php';
                 if (isset($_GET['name_hotel'])) {
                     $con = connectDB();
-                    $name_hotel = $_GET['name_hotel'] . '%';
+                    $name_hotel = '%'.$_GET['name_hotel'] . '%';
                     $select = "select * from hotel_info where name_hotel like '$name_hotel'";
                     $result = mysqli_query($con, $select);
                     $count = mysqli_num_rows($result);
