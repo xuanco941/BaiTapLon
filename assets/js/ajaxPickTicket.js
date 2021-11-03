@@ -6,10 +6,13 @@ const chiphi = document.querySelector('#chiphi');
 ngaydat.onchange = () => {
     const date1 = dayjs(ngaydat.value);
     const date2 = dayjs(ngayketthuc.value);
-    let num = Math.abs(date1.diff(date2, 'day'));
+    let num = Math.abs(date2.diff(date1, 'day'));
     chiphi.value = (20 * num);
     if(num==0){
         chiphi.value = 20;
+    }
+    if(date2.diff(date1,'day') <= 0){
+        ngaydat.value = ngayketthuc.value;
     }
 }
 
@@ -20,6 +23,10 @@ ngayketthuc.onchange = () => {
     chiphi.value = (20 * num);
     if(num==0){
         chiphi.value = 20;
+    }
+
+    if(date2.diff(date1,'day') <= 0){
+        ngayketthuc.value = ngaydat.value;
     }
 }
 

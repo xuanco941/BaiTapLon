@@ -7,6 +7,7 @@ session_start();
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="./assets/img/icon.ico" type="image/x-icon">
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="./assets/css/main.css">
@@ -87,8 +88,10 @@ session_start();
   <nav>
     <div class="container-fluid">
       <div class="text-center slogan">
-        <h2>Nhanh chóng, tiện lợi số 1 Châu Phi
-        </h2>
+        <h2 style="width:100%">Dịch vụ đặt vé khách sạn</h2>
+        <br/>
+        <h4 style="width:100%">Nhanh chóng, tiện lợi số 1 Châu Phi
+        </h4>
       </div>
       <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
